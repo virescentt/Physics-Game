@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Задача 2: Среднее значение</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/scripts.js"></script>
+</head>
+<body>
+    <div class="task-container">
+        <h1>Задача 2: Среднее значение</h1>
+        <p>Даны два числа: <span class="highlight">x</span> и <span class="highlight">y</span>. 
+           Необходимо найти их среднее значение по формуле:</p>
+        <p class="formula">Среднее = (x + y) / 2</p>
+        <form id="task-form">
+            <label for="x">Первое число (x):</label>
+            <input type="number" id="x" name="x">
+            <label for="y">Второе число (y):</label>
+            <input type="number" id="y" name="y">
+            <button id="display-answer" type="button" class="button" onclick="validateAndShowAnswer(task2Calculation, ['x', 'y'], 'answerSection')">Показать ответ</button>
+        </form>
+        <div id="error-message" style="color: red; display: none;">Пожалуйста, заполните все поля.</div>
+        <div id="answerSection"></div>
+
+        <div id="checkSection" style="display: none;">
+            <button class="button green" onclick="checkAnswer(true)">Верно</button>
+            <button class="button red" onclick="checkAnswer(false)">Неверно</button>
+        </div>
+    </div>
+
+    <script>
+        // Задача 2
+        function task2Calculation(x, y) {
+            return (x + y) / 2;
+        }
+    </script>
+</body>
+</html>

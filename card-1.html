@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Задача 1: Расчет кинетической энергии</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/scripts.js"></script>
+</head>
+<body>
+
+    <div class="container task-container">
+
+        <div class="card-content">
+
+            <div class="navbar">
+
+                <a href="index.html">
+                    <p class="task-navbar_item back-link">&lt;&lt; Все карточки</p>
+                </a>
+                <p class="task-navbar_item card-number">Карточка 1</p>
+
+            </div>
+
+            <h1 class="card-title">Задача 1: Расчет кинетической энергии</h1>
+            <p class="task-content" style="font-size: 20px;">Дано тело с массой <span class="highlight">m</span> и скоростью <span class="highlight">V</span>. Вычислите кинетическую энергию тела.
+            </p>
+
+            <div class="formula-container">
+
+                <button id="showFormulaBtn" class="button show-formula-btn" onclick="showFormula()">
+                    Показать Формулу <i style="color: white;" class="fa-solid fa-eye"></i>
+                    <span style="margin-top: 5px; display: block; text-align: center; color: red">( -0.5 балла)</span>
+                </button>
+                <p style="display: none;" class="formula">E = 0.5 * m * V²</p>
+
+                <!-- сюда еще через JS добавляется сообщ о потере баллов -->
+                
+            </div>
+
+            <form id="task-form">
+                
+            <label for="m">Масса тела (m):</label>
+            <input type="number" id="m" name="m" placeholder="Ваше значение?">
+            <label for="v">Скорость тела (V):</label>
+            <input type="number" id="v" name="v" placeholder="Ваше значение?"><br>
+            <div id="error-message" style="color: red; display: none;">Пожалуйста, заполните все поля.</div>
+            <button id="display-answer" type="button" class="button display-answer" onclick="validateAndShowAnswer(task1Calculation, ['m', 'v'], 'resultSection', { measurementVal: 'Дж'} )">Показать ответ</button>
+            <div id="resultSection">
+                <!-- Заполняется через JS -->
+            </div>
+            </form>
+
+            <!-- НО ПРИКОЛЬНЫЙ ВАРИАНТ КОГДА ОНО ВНЕ ДИВОВ ЭТИХ -->
+        <br>
+        <hr>
+
+        <!-- <i class="fas fa-exclamation-triangle" style="color: orange;"></i> -->
+        <p class="warning"> Используйте систему СИ за основу.</p>
+        
+        </div><!-- .card-content -->
+
+
+
+        <!-- Боковой блок с уровнем сложности -->
+        <div class="info-box" id="infoBox">
+            
+            <div class="navbar info-box-navbar">
+                <h4 class="info-box_title">Информация</h4>
+            </div>
+
+            <div class="info-box-content">
+
+                <p><i  class="fa-solid fa-gear"></i> Сложность: <span class="medium-lvl" id="difficulty">Средняя</span></p>
+                
+                <p><i class="fas fa-trophy"></i>
+                    Баллы: <span style="font-weight: bold;">2</span>
+                    <!-- <span id="points-animation" style="position: relative; display: inline-block;"></span> -->
+                </p>
+                <hr>
+                <p><i class="fas fa-check-circle"></i>
+                    Вы получите: <span style="font-weight: bold;" id="points">2</span>
+                    <span id="points-animation" style="position: relative; display: inline-block;"></span>
+                </p>
+
+            </div><!-- .info-box-content -->
+
+        </div><!-- .info-box -->
+
+        <!-- Модальное окно для ответа -->
+        <div id="answerModal" class="modal">
+            <!-- style="display: none;" -->
+
+            <div class="modal-content">
+                <p style="font-size: 25px;" id="modalAnswerText"></p>
+                <span class="close" onclick="closeModal(undefined,'cross')">&times;</span>
+                
+                <div id="modalButtons" class="modal-buttons">
+                    <button class="button yes" onclick="checkAnswer(true, 'points')">Верно</button>
+                    <button class="button no" onclick="checkAnswer(false, 'points')">Неверно</button>
+                </div>
+
+            </div>
+            
+        </div>
+
+        <div id="blurred-background" class="blurred-background"></div>
+        <!-- Немодальные кнопки Верно/Неверно -->
+        <!-- <div id="checkSection" style="display: none;">
+
+            <button class="button green" onclick="checkAnswer(true)">Верно</button>
+            <button class="button red" onclick="checkAnswer(false)">Неверно</button>
+
+        </div> -->
+
+    </div><!-- .task-container -->
+
+    <script>
+        // Задача 1
+        function task1Calculation(m, v) {
+            return 0.5 * m * v ** 2;
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js"></script>
+</body>
+</html>

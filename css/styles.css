@@ -1,0 +1,488 @@
+@import '../node_modules/animate.css/animate.min.css';
+
+html {
+  font-size: 20px; /* 1rem = ??px. Меняйте это значение для масштабирования */
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 1.25rem;
+  background-color: #f4f4f4;
+  height: 100vh;
+}
+
+h4 {
+  margin: 0;
+}
+
+h1 {
+  color: #333;
+  margin: 0;
+}
+
+a {
+  text-decoration: none; /* Убирает подчеркивание */
+  color: inherit; /* Убирает изменение цвета ссылки */
+}
+
+p {
+  margin: 0; 
+}
+
+hr {
+  opacity: 0.2;
+  width: 80%;
+}
+
+
+.container {
+  max-width: 75rem; 
+  margin: 0 auto;
+}
+
+.home-container {
+  text-align: center;
+}
+
+.home-title {
+  font-size: 2.5rem;
+  margin-bottom: .625rem;
+}
+
+.home-p {
+  margin-bottom: 1.25rem;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+}
+
+.card {
+  width: 12.5rem;
+  padding: .625rem;
+  border: 1px solid #ddd;
+  border-radius: .5rem;
+  text-align: center;
+  background-color: #f9f9f9;
+  box-shadow: .125rem .125rem .3125rem rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-around;
+  align-items: end;
+  height: 100vh;
+}
+
+
+/* -------------------------- */
+
+.card-content {
+  flex: 1;
+  max-width: 37.5rem; 
+  padding: 1.25rem; 
+  background-color: white;
+  border: .0625rem solid #ccc;
+  border-radius: .5rem; 
+  box-shadow: 0 0 .625rem rgba(0, 0, 0, 0.1); 
+}
+
+.task-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  gap: 1.25rem;
+}
+
+.info-box {
+  position: absolute;
+  right: 1.875rem;
+  width: 12.5rem;
+  padding: .9375rem;
+  border: .0625rem solid #ccc;
+  border-radius: .5rem; 
+  background-color: white;
+  text-align: left;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  display: inline-block;
+}
+
+.info-box.reduced {
+  transform: scale(0.8);
+  opacity: 0.5;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  transition: all 0.3s ease;
+  align-items: center;
+  background-color: #f4f4f4;
+  padding: .625rem; 
+}
+
+.info-box-content {
+  margin-top: 1.25rem;
+  align-items: left;
+}
+
+.info-box-content p {
+  margin-bottom: .625rem;
+}
+
+.medium-lvl {
+  color: rgb(255, 133, 3);
+  font-weight: bold;
+}
+
+.task-navbar_item,
+.info-box_title {
+  color: #9a9a9a;
+  font-size: 1rem; 
+  color: #333;
+  text-decoration: none;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.task-navbar_item.card-number,
+.info-box_title,
+.home-p {
+  color: #666;
+  font-weight: lighter;
+}
+
+.task-navbar_item.back-link:hover {
+  color: #000000;
+  transform: translateX(.3125rem);
+}
+
+.card-title {
+  margin: 1.25rem 0;
+}
+
+.highlight {
+  font-weight: bold;
+  color: #000000;
+}
+
+
+/* 
+button {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+} */
+
+
+button, .card {
+  transition: all 0.3s ease;
+  background-color: #333333;
+  color: white;
+}
+
+button:hover, .card:hover {
+  background-color: #555555;
+  transform: scale(1.02);
+}
+
+form {
+  text-align: center;
+}
+
+i {
+  font-size: 0.8em;
+  color: black; 
+}
+
+.button {
+  margin-top: .625rem; 
+  padding: .625rem 1.25rem;
+  font-size: 1rem; 
+  border: none;
+  border-radius: .313rem; 
+  cursor: pointer;
+}
+
+.formula-container {
+  margin-bottom: 1.875rem; 
+}
+
+.show-formula-btn {
+  color: white;
+  margin: 1.25rem 0 .938rem; 
+  width: 100%;
+}
+
+.show-formula-btn:hover {
+  background-color: #6e2828;
+}
+
+.formula-container .formula {
+  margin-bottom: .625rem;
+  font-size: 1.25rem; 
+  font-style: italic;
+  color: #555;
+}
+
+.formula-container .formula-warning {
+  margin-bottom: 1.25rem;
+  font-size: .938rem; 
+}
+
+.warning {
+  margin: 1.25rem 0 .625rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.btn-disabled, .btn-disabled:hover {
+  transform: none;
+  background-color: lightgray;
+  color: darkgray;
+}
+
+#error-message {
+  margin-top: .625rem; 
+  font-size: .875rem; 
+}
+
+#resultSection {
+  /* margin-top: 20px; */
+  transition: opacity 1s ease;
+  opacity: 0;
+  font-size: 1.875rem;
+  display: inline-block;
+  text-align: start;
+}
+
+.whole-answer-display {
+  display: flex;
+  align-items: flex-end;
+}
+
+/* input[type="number"]::-webkit-outer-spin-button, */
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+  /* display: none; <- Crashes Chrome on hover */
+  -webkit-appearance: none;
+  margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+input[type="number"] {
+  padding: .625rem; 
+  margin: .313rem 0 .625rem;
+  border-radius: .313rem;
+  border: 1px solid #ccc;
+  width: 30%;
+  font-size: .938rem; 
+}
+
+#task-form label {
+  display: block;
+  margin-top: .313rem;
+  font-size: 1.25rem; 
+}
+
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 1s ease, opacity 0.3s ease;
+}
+
+.show {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* .modal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(.3125rem);
+} */
+
+/* .modal.show .modal-overlay {
+  visibility: visible;
+  opacity: 1;
+} */
+
+.modal-content {
+  position: relative;
+  padding: 2.5rem; 
+  border-radius: .75rem;
+  z-index: 1001;
+  width: 31.25rem;
+  text-align: center;
+}
+
+#modalAnswerText {
+  font-size: 1.5rem; 
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: .9375rem; 
+}
+
+#modalAnswerText span {
+  font-size: 2rem;
+}
+
+.modal-buttons button {
+  margin: .625rem; 
+  padding: 1.25rem 2.5rem;
+  border-radius: .625rem;
+  color: white;
+}
+
+.modal-buttons button:hover {
+  background-color: #555555;
+  transform: scale(1.02);
+}
+
+.modal-buttons .yes {
+  background-color: #2e3976;
+}
+
+.button-buttons .no {
+  background-color: #333333;
+}
+
+
+/* .display-answer {
+  font-size: 20px;
+} */
+
+
+.close {
+  cursor: pointer;
+  position: absolute;
+  top: .625rem; 
+  right: .625rem; 
+  font-size: 1.25rem; 
+  z-index: 1002;
+}
+
+/* ---------------------------
+Для изменения баллов при юзе формулы */
+
+.points-change {
+  color: red;
+  position: absolute;
+  font-weight: bold;
+  right: -1.875rem;
+  animation: pointsFade 1.5s ease-out forwards;
+}
+
+@keyframes pointsFade {
+  0% {
+      opacity: 1;
+      transform: translateY(0);
+  }
+  100% {
+      opacity: 0;
+      transform: translateY(1.25rem); 
+  }
+}
+
+#points {
+  transition: color 0.3s ease;
+}
+
+
+.points-change {
+  font-size: 1.25rem;
+  color: red;
+  position: absolute;
+  font-weight: bold;
+  right: -3.125rem; /* Сдвиг справа от баллов */
+  top: -0.9375rem;
+  animation: pointsFade 1.5s ease-out forwards;
+}
+
+@keyframes pointsFade {
+  0% {
+      opacity: 1;
+      transform: translateY(0);
+  }
+  100% {
+      opacity: 0;
+      transform: translateY(1.25rem); /* Сдвиг вниз */
+  }
+}
+
+#points {
+  transition: color 0.3s ease;
+}
+
+
+/* ---------------------------
+  Для кнопок ВЕРНО НЕВЕРНО */
+
+#resultDisplay {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2000;
+  text-align: center;
+}
+
+.points-text {
+  font-size: 3.125rem;
+  font-weight: bold;
+  color: white;
+}
+
+.blurred-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* затемнение */
+  backdrop-filter: blur(.3125rem); /* эффект размытия */
+  visibility: hidden; /* по умолчанию скрыто */
+  opacity: 0;
+  transition: visibility 0.3s ease, opacity 0.3s ease; /* плавное появление */
+  z-index: 999; /* позади модального окна */
+}
+
+.blurred-background.active {
+  visibility: visible;
+  opacity: 1;
+}
+
+.pepe-cry {
+  width: 31.25rem;
+  height: auto;
+  user-select: none;
+}
+
+.failure {
+  color: red;
+}
+
+
+/* --------------------------
+      ДЛЯ ЭФФЕКТА НА ИТОГОВЫЕ +БАЛЛЫ при кнопке ВЕРНО 
+*/
