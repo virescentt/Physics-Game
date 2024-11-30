@@ -1,7 +1,6 @@
 function validateAndShowAnswer(calcFunction, paramNames, resultElementId = 'resultSection', {measurementVal = ''} = {}) {
   const formulaBtn = document.querySelector('.show-formula-btn');
   const formulaSpan = formulaBtn.querySelector('span');
-  const inputs = document.querySelectorAll('input');
   const answerBtn = document.getElementById('display-answer');
   const errorMessage = document.getElementById('error-message');
   const resultSection = document.getElementById(resultElementId);
@@ -31,18 +30,19 @@ function validateAndShowAnswer(calcFunction, paramNames, resultElementId = 'resu
     });
       // Если все поля заполнены, вычисляем и показываем ответ
       const params = paramNames.map(name => parseFloat(document.getElementById(name).value));
-      const result = calcFunction(...params);  // Используем переданную функцию с параметрами
+      let result = calcFunction(...params);  // Используем переданную функцию с параметрами
+      result = Math.round(result * 100) / 100;
       formulaBtn.classList.add('btn-disabled');
       formulaBtn.disabled = true; // Отключаем кнопку для дальнейших кликов
       answerBtn.classList.add('btn-disabled');
       // answerBtn.disabled = true;
-      answerBtn.style.display = 'none'; 
+      answerBtn.style.display = 'none';
 
       formulaSpan.style.color = '';
 
       // вот здесь уже вопрос, не думаю что мне в эту секцию надо выводить ответ
-      resultSection.innerHTML = `Ответ: ${result} ${measurementVal}`; 
-      
+      resultSection.innerHTML = `Ответ: ${result} ${measurementVal}`;
+
       // checkSection.style.display = 'block'; Немодальные кнопки Верно/Неверно
 
       showModal(result, measurementVal);  // Показываем модальное окно с правильным ответом
@@ -88,19 +88,17 @@ function validateAndShowAnswer(calcFunction, paramNames, resultElementId = 'resu
 
 function showFormula() {
   // Получаем кнопку и формулу
-  const button = document.querySelector('.show-formula-btn');
-  const formula = button.nextElementSibling; // Элемент <p> с формулой
+  const button = document.getElementById('showFormulaBtn');
+  const formula = document.getElementById('formula'); // Элемент <p> с формулой
   const span = button.querySelector('span');
 
-  const warningMessage = document.createElement('p');
-  warningMessage.textContent = "Вы потеряли 0.5 балла за использование подсказки.";
-  warningMessage.style.color = "red";
+  const warningMessage = document.getElementById('formulaWarning');
+  warningMessage.style.display = 'block';
   warningMessage.classList.add('formula-warning');
 
   // Проверяем, была ли уже показана формула
   if (formula.style.display === "none" || formula.style.display === "") {
       formula.style.display = "block"; // Показываем формулу
-      button.parentNode.appendChild(warningMessage);
       button.classList.add('btn-disabled'); // Добавляем класс для неактивной кнопки
       button.disabled = true; // Отключаем кнопку для дальнейших кликов
       span.style.display = 'none';
@@ -145,15 +143,15 @@ function showModal(result, measurementVal) {
   const modal = document.getElementById('answerModal');
   const modalAnswerText = document.getElementById('modalAnswerText');
   const warningMessage = document.querySelector('.formula-warning');
-  
+
   // Устанавливаем текст ответа
   modalAnswerText.innerHTML = `Правильный ответ: <span> ${result} ${measurementVal} </span>`;
-  
+
   // Добавляем класс для отображения модального окна
   modal.classList.add('show');
   toggleBlur(true);
   warningMessage.style.color = 'darkgrey';
-  
+
 }
 
 // Закрываем модальное окно
@@ -161,10 +159,10 @@ function closeModal(resultElementId = 'resultSection', fromWhom = 'button') {
   const modal = document.getElementById('answerModal');
   const modalBtns = document.getElementById('modalButtons');
   const resultSection = document.getElementById(resultElementId);
-  
+
 
   resultSection.style.opacity = 1;
-  
+
   // Добавляем класс для скрытия модального окна
   modal.classList.remove('show');
   for (let btn of modalBtns.children) {
@@ -191,7 +189,7 @@ formulaBtn.addEventListener("click", () => {
   let currentPoints = parseFloat(pointsEl.textContent);
 
   const decrement = 0.5;
-  
+
   if (currentPoints > 0) {
       pointsEl.textContent = (currentPoints - decrement).toFixed(1);
 
@@ -217,10 +215,10 @@ formulaBtn.addEventListener("click", () => {
 // Универсальная функция для проверки правильности ответа
 function checkAnswer(isCorrect, finalPointsElementId) {
   closeModal();
-  
+
   const finalPointsEl = document.getElementById(finalPointsElementId);
 
-  
+
   // Создаем элемент для отображения результата
   const resultDisplay = document.createElement('div');
   resultDisplay.id = 'resultDisplay';
@@ -244,7 +242,7 @@ function checkAnswer(isCorrect, finalPointsElementId) {
   `;
 
   toggleBlur(true);  // Включить размытый фон
-    
+
   }
 
   // Удаляем сообщение через несколько секунд
@@ -275,7 +273,7 @@ function triggerCelebration() {
   });
 
 }
-// 
+//
 // function validateAndShowAnswer(calcFunction, paramNames, resultElementId) {
 //   const inputs = document.querySelectorAll('input');
 //   const errorMessage = document.getElementById('error-message');

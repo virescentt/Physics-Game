@@ -9,7 +9,7 @@ body {
   margin: 0;
   padding: 1.25rem;
   background-color: #f4f4f4;
-  height: 100vh;
+  padding: 0;
 }
 
 h4 {
@@ -27,7 +27,7 @@ a {
 }
 
 p {
-  margin: 0; 
+  margin: 0;
 }
 
 hr {
@@ -37,12 +37,20 @@ hr {
 
 
 .container {
-  max-width: 75rem; 
+  max-width: 75rem;
   margin: 0 auto;
+  align-items: center;
+  box-sizing: border-box;
+  min-height: 100vh;
+  padding: 1.25rem 0;
 }
 
 .home-container {
   text-align: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
 .home-title {
@@ -73,9 +81,12 @@ hr {
 
 .footer {
   display: flex;
-  justify-content: space-around;
-  align-items: end;
-  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  width: 100%;
+  color: rgb(157, 156, 156);
+  height: 100px;
 }
 
 
@@ -83,12 +94,12 @@ hr {
 
 .card-content {
   flex: 1;
-  max-width: 37.5rem; 
-  padding: 1.25rem; 
+  max-width: 37.5rem;
+  padding: 1.25rem;
   background-color: white;
   border: .0625rem solid #ccc;
-  border-radius: .5rem; 
-  box-shadow: 0 0 .625rem rgba(0, 0, 0, 0.1); 
+  border-radius: .5rem;
+  box-shadow: 0 0 .625rem rgba(0, 0, 0, 0.1);
 }
 
 .task-container {
@@ -96,6 +107,7 @@ hr {
   display: flex;
   justify-content: center;
   gap: 1.25rem;
+  max-height: fit-content;
 }
 
 .info-box {
@@ -104,7 +116,7 @@ hr {
   width: 12.5rem;
   padding: .9375rem;
   border: .0625rem solid #ccc;
-  border-radius: .5rem; 
+  border-radius: .5rem;
   background-color: white;
   text-align: left;
   transition: transform 0.3s ease, opacity 0.3s ease;
@@ -122,7 +134,7 @@ hr {
   transition: all 0.3s ease;
   align-items: center;
   background-color: #f4f4f4;
-  padding: .625rem; 
+  padding: .625rem;
 }
 
 .info-box-content {
@@ -142,7 +154,7 @@ hr {
 .task-navbar_item,
 .info-box_title {
   color: #9a9a9a;
-  font-size: 1rem; 
+  font-size: 1rem;
   color: #333;
   text-decoration: none;
   transition: color 0.3s ease, transform 0.3s ease;
@@ -170,12 +182,12 @@ hr {
 }
 
 
-/* 
+/*
 button {
   margin-top: 10px;
   padding: 10px;
-  background-color: #4CAF50;
   color: white;
+  background-color: #4CAF50;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -187,6 +199,7 @@ button, .card {
   transition: all 0.3s ease;
   background-color: #333333;
   color: white;
+  font-weight: bold;
 }
 
 button:hover, .card:hover {
@@ -196,30 +209,42 @@ button:hover, .card:hover {
 
 form {
   text-align: center;
+  align-items: center;
 }
 
-i {
+.task-container i {
   font-size: 0.8em;
-  color: black; 
+  color: black;
+}
+
+a i {
+    font-size: 1.0em; /* Размер иконки */
+    transition: color 0.3s ease;
+}
+
+a i:hover {
+    color: #525252; /* Цвет при наведении */
 }
 
 .button {
-  margin-top: .625rem; 
+  margin-top: .625rem;
   padding: .625rem 1.25rem;
-  font-size: 1rem; 
+  font-size: 1rem;
   border: none;
-  border-radius: .313rem; 
+  border-radius: .313rem;
   cursor: pointer;
 }
 
 .formula-container {
-  margin-bottom: 1.875rem; 
+  margin: 1.875rem 0;
 }
 
 .show-formula-btn {
   color: white;
-  margin: 1.25rem 0 .938rem; 
-  width: 100%;
+  margin: 1.25rem 0 0;
+  width: 50%;
+  display: inline-block;
+  font-size: medium;
 }
 
 .show-formula-btn:hover {
@@ -228,14 +253,15 @@ i {
 
 .formula-container .formula {
   margin-bottom: .625rem;
-  font-size: 1.25rem; 
+  font-size: 1.25rem;
   font-style: italic;
   color: #555;
 }
 
 .formula-container .formula-warning {
   margin-bottom: 1.25rem;
-  font-size: .938rem; 
+  font-size: .9375em;
+  color: red;
 }
 
 .warning {
@@ -251,8 +277,8 @@ i {
 }
 
 #error-message {
-  margin-top: .625rem; 
-  font-size: .875rem; 
+  margin-top: .625rem;
+  font-size: .875rem;
 }
 
 #resultSection {
@@ -277,18 +303,18 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 }
 
 input[type="number"] {
-  padding: .625rem; 
+  padding: .625rem;
   margin: .313rem 0 .625rem;
   border-radius: .313rem;
   border: 1px solid #ccc;
   width: 30%;
-  font-size: .938rem; 
+  font-size: .938rem;
 }
 
 #task-form label {
   display: block;
   margin-top: .313rem;
-  font-size: 1.25rem; 
+  font-size: 1.25rem;
 }
 
 
@@ -329,7 +355,7 @@ input[type="number"] {
 
 .modal-content {
   position: relative;
-  padding: 2.5rem; 
+  padding: 2.5rem;
   border-radius: .75rem;
   z-index: 1001;
   width: 31.25rem;
@@ -337,10 +363,10 @@ input[type="number"] {
 }
 
 #modalAnswerText {
-  font-size: 1.5rem; 
+  font-size: 1.5rem;
   font-weight: bold;
   color: #fff;
-  margin-bottom: .9375rem; 
+  margin-bottom: .9375rem;
 }
 
 #modalAnswerText span {
@@ -348,7 +374,7 @@ input[type="number"] {
 }
 
 .modal-buttons button {
-  margin: .625rem; 
+  margin: .625rem;
   padding: 1.25rem 2.5rem;
   border-radius: .625rem;
   color: white;
@@ -368,17 +394,22 @@ input[type="number"] {
 }
 
 
-/* .display-answer {
-  font-size: 20px;
-} */
+#display-answer {
+  background-color: #2e3976;
+  transition: all 0.3s ease;
+}
+
+#display-answer:hover {
+  background-color: #333;
+}
 
 
 .close {
   cursor: pointer;
   position: absolute;
-  top: .625rem; 
-  right: .625rem; 
-  font-size: 1.25rem; 
+  top: .625rem;
+  right: .625rem;
+  font-size: 1.25rem;
   z-index: 1002;
 }
 
@@ -400,7 +431,7 @@ input[type="number"] {
   }
   100% {
       opacity: 0;
-      transform: translateY(1.25rem); 
+      transform: translateY(1.25rem);
   }
 }
 
@@ -484,5 +515,5 @@ input[type="number"] {
 
 
 /* --------------------------
-      ДЛЯ ЭФФЕКТА НА ИТОГОВЫЕ +БАЛЛЫ при кнопке ВЕРНО 
+      ДЛЯ ЭФФЕКТА НА ИТОГОВЫЕ +БАЛЛЫ при кнопке ВЕРНО
 */
