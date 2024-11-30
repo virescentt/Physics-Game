@@ -178,7 +178,7 @@ function closeModal(resultElementId = 'resultSection', fromWhom = 'button') {
 }
 
 
-var formulaBtn = document.getElementById("showFormulaBtn");
+const formulaBtn = document.getElementById("showFormulaBtn");
 console.log(formulaBtn);
 formulaBtn.addEventListener("click", () => {
   console.log('Hmm.. But you have clicked my bro');
@@ -273,6 +273,35 @@ function triggerCelebration() {
   });
 
 }
+
+function homeCardGeneration () {
+
+    const cardsContainer = document.getElementById('cardsContainer');
+
+    console.log('погнаЛИИИ');
+    // Генерация карточек
+
+    for (let i = 1; i <= 30; i++) {
+        // Шаблон HTML с динамическим номером
+        const cardHTML = `
+            <a href="cards/card-${i}.html">
+                <div class="card" data-id="${i}">
+                    Карточка ${i}
+                </div>
+            </a>
+        `;
+
+        // Создаем временный элемент, чтобы вставить HTML
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = cardHTML;
+
+        // Добавляем карточку в контейнер
+        cardsContainer.appendChild(tempDiv.firstElementChild);
+    }
+
+}
+
+
 //
 // function validateAndShowAnswer(calcFunction, paramNames, resultElementId) {
 //   const inputs = document.querySelectorAll('input');

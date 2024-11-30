@@ -7,36 +7,31 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="shortcut icon" href="img/what.jpg" type="image/x-icon">
+  <link rel="stylesheet" href="css/media.css">
+  <link rel="stylesheet" href="css/vendors.css">
 </head>
-<style>
-    .container {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-</style>
 <body>
     <div class="container home-container">
 
-        <div class="">
 
         <h1 class="home-title">Physics Game</h1>
-        <p class="home-p">Пожалуйста, выберите карточку</p>
+        <p class="home-p">Пожалуйста, выберите карточку или..</p>
 
-
-        <div class="card-container">
-          <!-- <div class="card" onclick="redirectToCard(1)">Карточка 1</div> -->
-          <a href="card-1.html">
-              <div class="card">
-                  Карточка 1
-              </div>
-          </a>
-
-          <a href="card-2.html">
-              <div class="card">
-                  Карточка 2
-              </div>
-          </a>
+        <div class="search-container">
+          <input type="text" maxlength="2"
+          oninput="this.value = this.value.replace(/[^0-9]/g, '')" id="searchInput" placeholder="Введите номер карточки">
+          <!-- <i class="fa-solid fa-magnifying-glass"></i> -->
         </div>
+
+        <div id="cardsContainer" class="cards-container">
+          <!-- <div class="card" onclick="redirectToCard(1)">Карточка 1</div> -->
+           <!-- это необходимо потому что иначе функция будет неопределенной из-за того что вызывается раньше подключения скрипта -->
+          <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                homeCardGeneration();
+            });
+        </script>
+        <!-- </div> -->
 
         </div>
 
@@ -46,19 +41,20 @@
             </p>
             <p class="contacts">
                 <div class="social">
-
+                 Contact:
                 <a href="https://t.me/zwargx" target="_blank">
-                    Contact: <i class="fab fa-telegram"></i>
+                   <i class="fab fa-telegram"></i>
                 </a>
                 <a href="https://vk.com/zwargx" target="_blank">
-                 <i class="fab fa-instagram"></i>
+                 <i class="fab fa-vk social"></i>
                 </a>
 
                 </div>
             </p>
-        </footer>
+        </fo/oter>
     </div><!-- .container -->
-  <script src=js/scripts.js"></script>
+  <script src="js/scripts.js"></script>
+  <script src="js/search.js"></script>
 </body>
 </html>
 
