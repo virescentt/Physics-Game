@@ -152,35 +152,6 @@ function showModal(result, measurementVal) {
   toggleBlur(true);
   warningMessage.style.color = 'darkgrey';
 
-}
-
-// Закрываем модальное окно
-function closeModal(resultElementId = 'resultSection', fromWhom = 'button') {
-  const modal = document.getElementById('answerModal');
-  const modalBtns = document.getElementById('modalButtons');
-  const resultSection = document.getElementById(resultElementId);
-
-
-  resultSection.style.opacity = 1;
-
-  // Добавляем класс для скрытия модального окна
-  modal.classList.remove('show');
-  for (let btn of modalBtns.children) {
-    btn.disabled = true; // Добавляем класс каждому дочернему элементу
-  }
-
-
-  if (fromWhom == 'cross') {
-    toggleBlur(false); // оно срабатывает при нажатии на кнопки Верно Неверно с нужным им таймом, поэтому это излишне если не использовать крестик
-    location.reload();
-  }
-
-}
-
-
-const formulaBtn = document.getElementById("showFormulaBtn");
-console.log(formulaBtn);
-formulaBtn.addEventListener("click", () => {
   console.log('Hmm.. But you have clicked my bro');
   const pointsEl = document.getElementById("points");
   const animationContainer = document.getElementById("points-animation");
@@ -210,7 +181,31 @@ formulaBtn.addEventListener("click", () => {
           pointsEl.style.color = ""; // Возвращаем стандартный цвет
       }, 300);
   }
-});
+
+}
+
+// Закрываем модальное окно
+function closeModal(resultElementId = 'resultSection', fromWhom = 'button') {
+  const modal = document.getElementById('answerModal');
+  const modalBtns = document.getElementById('modalButtons');
+  const resultSection = document.getElementById(resultElementId);
+
+
+  resultSection.style.opacity = 1;
+
+  // Добавляем класс для скрытия модального окна
+  modal.classList.remove('show');
+  for (let btn of modalBtns.children) {
+    btn.disabled = true; // Добавляем класс каждому дочернему элементу
+  }
+
+
+  if (fromWhom == 'cross') {
+    toggleBlur(false); // оно срабатывает при нажатии на кнопки Верно Неверно с нужным им таймом, поэтому это излишне если не использовать крестик
+    location.reload();
+  }
+
+}
 
 // Универсальная функция для проверки правильности ответа
 function checkAnswer(isCorrect, finalPointsElementId) {
@@ -274,33 +269,21 @@ function triggerCelebration() {
 
 }
 
-function homeCardGeneration () {
 
-    const cardsContainer = document.getElementById('cardsContainer');
+const infoBox = document.getElementById("infoBox");
+const infoTab = document.getElementById("infoTab");
 
-    console.log('погнаЛИИИ');
-    // Генерация карточек
+// Переключение видимости бокса
+infoTab.addEventListener("click", () => {
+  infoBox.classList.toggle("open");
+});
 
-    for (let i = 1; i <= 30; i++) {
-        // Шаблон HTML с динамическим номером
-        const cardHTML = `
-            <a href="cards/card-${i}.html">
-                <div class="card" data-id="${i}">
-                    Карточка ${i}
-                </div>
-            </a>
-        `;
-
-        // Создаем временный элемент, чтобы вставить HTML
-        const tempDiv = document.createElement('div');
-        tempDiv.innerHTML = cardHTML;
-
-        // Добавляем карточку в контейнер
-        cardsContainer.appendChild(tempDiv.firstElementChild);
-    }
-
-}
-
+// Закрытие бокса при клике за его пределами
+document.addEventListener("click", (event) => {
+  if (!infoBox.contains(event.target) && !infoTab.contains(event.target)) {
+    infoBox.classList.remove("open");
+  }
+});
 
 //
 // function validateAndShowAnswer(calcFunction, paramNames, resultElementId) {
