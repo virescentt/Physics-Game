@@ -2,22 +2,55 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Задача 1: Расчет кинетической энергии</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/styles_test.css">
 </head>
 <body>
-    <h2>Centered Box</h2>
-    <p>
-        This is a block with text content. On smaller screens, the text will wrap to the next line,
-        and the box will stay centered with its sides being cropped.
-    </p>
+        <div class="container home-container">
 
-    <script>
-        // Задача 1
-        function task1Calculation(m, v) {
-            return 0.5 * m * v ** 2;
-        }
+
+            <h1 class="home-title">Granicy Chaosu</h1>
+            <p class="home-p">Пожалуйста, выберите карточку или..</p>
+
+            <div class="search-container">
+              <input type="text" maxlength="2"
+              oninput="this.value = this.value.replace(/[^0-9]/g, '')" id="searchInput" placeholder="Введите номер, np. 15">
+              <!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+            </div>
+
+            <div id="cardsContainer" class="cards-container">
+              <!-- <div class="card" onclick="redirectToCard(1)">Карточка 1</div> -->
+               <!-- это необходимо потому что иначе функция будет неопределенной из-за того что вызывается раньше подключения скрипта -->
+              <script>
+                document.addEventListener('DOMContentLoaded', () => {
+                    homeCardGeneration();
+                });
+            </script>
+            <!-- </div> -->
+
+            </div>
+
+            <footer class="footer">
+                <p class="author">
+                    Author: Virescent
+                </p>
+                <p class="contacts">
+                    <div class="social">
+                     Contact:
+                    <a href="https://t.me/zwargx" target="_blank">
+                       <i class="fab fa-telegram"></i>
+                    </a>
+                    <a href="https://vk.com/zwargx" target="_blank">
+                     <i class="fab fa-vk social"></i>
+                    </a>
+
+                    </div>
+                </p>
+            </footer>
+        </div><!-- .container -->
+
     </script>
     <!-- <script src="../js/scripts.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js"></script>

@@ -233,7 +233,7 @@ function checkAnswer(isCorrect, finalPointsElementId) {
   } else {
     // Логика для неправильного ответа
     resultDisplay.innerHTML = `
-    <img class="pepe-cry animate__animated animate__flipInY " src="img/pepe_cry.png" alt="Плачущий Пепе">
+    <img class="pepe-cry animate__animated animate__flipInY " src="../img/pepe_cry.png" alt="Плачущий Пепе">
   `;
 
   toggleBlur(true);  // Включить размытый фон

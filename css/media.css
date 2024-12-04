@@ -21,6 +21,10 @@
 
 @media screen and (max-width: 592px) {
 
+    .up-content {
+        min-height: 24vh;
+    }
+
     .task-container{
         width: 100%;
     }
@@ -72,6 +76,34 @@
         font-size: 16px;
     }
 
+    #task-form input {
+        display: block;
+        width: 100%;
+    }
+
+    #task-form label {
+        font-size: 0.8rem;
+    }
+
+    html {
+        font-size: 17px;
+    }
+
+    .up-content {
+        min-height: 20vh;
+    }
+
+    #task-form button {
+        font-size: smaller;
+    }
+
+    #showFormulaBtn {
+        width: 13.125rem;
+    }
+
+    .card-title{
+        font-size: 1.6rem;
+    }
   }
 
 @media screen and (max-width: 425px) {
@@ -79,6 +111,9 @@
     .cards-container {
         width: 75%;
         }
+
+
+
 }
 
 @media screen and (max-width: 343px) {
@@ -99,6 +134,10 @@
         width: 180px;
         padding: 10px;
         font-size: 16px;
+    }
+
+    html {
+        font-size: 13px;
     }
 
   }
