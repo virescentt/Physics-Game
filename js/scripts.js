@@ -116,7 +116,9 @@ function showFormula() {
   let currentPoints = parseFloat(pointsEl.textContent);
   const decrement = 0.5;
   if (currentPoints > 0) {
+      console.log(`перед этим ${pointsEl.textContent}`)
       pointsEl.textContent = (currentPoints - decrement).toFixed(1);
+      console.log(`отработало ${pointsEl.textContent}`)
 
       // Создаем красную анимацию "-0.5"
       const pointsChange = document.createElement("span");
@@ -152,36 +154,6 @@ function showModal(result, measurementVal) {
   toggleBlur(true);
   warningMessage.style.color = 'darkgrey';
 
-  console.log('Hmm.. But you have clicked my bro');
-  const pointsEl = document.getElementById("points");
-  const animationContainer = document.getElementById("points-animation");
-
-  // Уменьшаем баллы
-  let currentPoints = parseFloat(pointsEl.textContent);
-
-  const decrement = 0.5;
-
-  if (currentPoints > 0) {
-      pointsEl.textContent = (currentPoints - decrement).toFixed(1);
-
-      // Создаем красную анимацию "-0.5"
-      const pointsChange = document.createElement("span");
-      pointsChange.textContent = `-${decrement}`;
-      pointsChange.classList.add("points-change");
-      animationContainer.appendChild(pointsChange);
-
-      // Удаляем элемент после завершения анимации
-      pointsChange.addEventListener("animationend", () => {
-          animationContainer.removeChild(pointsChange);
-      });
-
-      // Добавляем временное покраснение текста баллов
-      pointsEl.style.color = "red";
-      setTimeout(() => {
-          pointsEl.style.color = ""; // Возвращаем стандартный цвет
-      }, 300);
-  }
-
 }
 
 // Закрываем модальное окно
@@ -197,6 +169,7 @@ function closeModal(resultElementId = 'resultSection', fromWhom = 'button') {
   modal.classList.remove('show');
   for (let btn of modalBtns.children) {
     btn.disabled = true; // Добавляем класс каждому дочернему элементу
+    btn.classList.add("hidden");
   }
 
 
@@ -270,20 +243,20 @@ function triggerCelebration() {
 }
 
 
-const infoBox = document.getElementById("infoBox");
-const infoTab = document.getElementById("infoTab");
+// const infoBox = document.getElementById("infoBox");
+// const infoTab = document.getElementById("infoTab");
 
-// Переключение видимости бокса
-infoTab.addEventListener("click", () => {
-  infoBox.classList.toggle("open");
-});
+// // Переключение видимости бокса
+// infoTab.addEventListener("click", () => {
+//   infoBox.classList.toggle("open");
+// });
 
-// Закрытие бокса при клике за его пределами
-document.addEventListener("click", (event) => {
-  if (!infoBox.contains(event.target) && !infoTab.contains(event.target)) {
-    infoBox.classList.remove("open");
-  }
-});
+// // Закрытие бокса при клике за его пределами
+// document.addEventListener("click", (event) => {
+//   if (!infoBox.contains(event.target) && !infoTab.contains(event.target)) {
+//     infoBox.classList.remove("open");
+//   }
+// });
 
 //
 // function validateAndShowAnswer(calcFunction, paramNames, resultElementId) {

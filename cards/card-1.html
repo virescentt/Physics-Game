@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Задача 1: Расчет кинетической энергии</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/styles.css">
     <!-- <link rel="stylesheet" href="../css/vendors.css"> -->
     <link rel="stylesheet" href="../css/info-box.css">
     <link rel="stylesheet" href="../css/media.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
 
 </head>
 <body>
@@ -61,11 +61,6 @@
                     <input type="number" id="v" name="v" placeholder="? m/s" pattern="\d*" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
 
                 </div>
-                <div class="third-container">
-                    <label for="v">Скорость тела (V):</label>
-                    <input type="number" id="v" name="v" placeholder="? m/s" pattern="\d*" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
-
-                </div>
 
             <!-- </div> -->
 
@@ -90,10 +85,10 @@
 
         </div><!-- .card-content -->
 
-
+        <div class="poka-shto-pizduj">
         <div class="info-container">
             <div class="info-tab" id="infoTab"><i class="fa-solid fa-chevron-left"></i></div>
-            <!-- Боковой блок с уровнем сложности -->
+            Боковой блок с уровнем сложности
             <div class="info-box" id="infoBox">
 
                 <div class="navbar info-box-navbar">
@@ -106,7 +101,7 @@
 
                     <p><i class="fas fa-trophy"></i>
                         Баллы: <span style="font-weight: bold;">2</span>
-                        <!-- <span id="points-animation" style="position: relative; display: inline-block;"></span> -->
+                        <span id="points-animation" style="position: relative; display: inline-block;"></span>
                     </p>
                     <hr>
                     <p><i class="fas fa-check-circle"></i>
@@ -114,11 +109,13 @@
                         <span id="points-animation" style="position: relative; display: inline-block;"></span>
                     </p>
 
-                </div><!-- .info-box-content -->
+                </div>.info-box-content
 
-            </div><!-- .info-box -->
+            </div>.info-box
 
         </div>
+        </div>
+
         <!-- Модальное окно для ответа -->
         <div id="answerModal" class="modal">
             <!-- style="display: none;" -->
