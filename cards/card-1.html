@@ -44,9 +44,9 @@
             <form id="task-form">
 
             <label for="m">Масса тела (m):</label>
-            <input type="number" id="m" name="m" placeholder="Ваше значение?">
+            <input type="number" id="m" name="m" placeholder="? kg">
             <label for="v">Скорость тела (V):</label>
-            <input type="number" id="v" name="v" placeholder="Ваше значение?"><br>
+            <input type="number" id="v" name="v" placeholder="? m/s"><br>
             <div id="error-message" style="color: red; display: none;">Пожалуйста, заполните все поля.</div>
 
             <button id="showFormulaBtn" class="button show-formula-btn" onclick="showFormula()">
@@ -65,13 +65,13 @@
         <hr>
 
         <!-- <i class="fas fa-exclamation-triangle" style="color: orange;"></i> -->
-        <p class="warning"> Используйте систему СИ за основу.</p>
+        <p class="warning"> Используйте физические единицы системы СИ.</p>
 
         </div><!-- .card-content -->
 
 
         <div class="info-container">
-            <div class="info-tab" id="infoTab">≡</div>
+            <div class="info-tab" id="infoTab"><i class="fa-solid fa-chevron-left"></i></div>
             <!-- Боковой блок с уровнем сложности -->
             <div class="info-box" id="infoBox">
 

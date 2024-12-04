@@ -1,30 +1,37 @@
-@media screen and (max-width: 869px) {
+@media screen and (min-width: 867px) {
 
-    .cards-container {
-        gap: 10px;
-      }
+    #searchInput {
+        width: 440px;
+    }
+
+}
+
+@media screen and (max-width: 867px) {
 
     .card {
         width: 12.5rem;
     }
 
       #searchInput {
-        width: 340px;
+        width: 440px;
         padding: 10px;
-        font-size: 16px;
     }
 
   }
 
 @media screen and (max-width: 592px) {
 
+    .task-container{
+        width: 100%;
+    }
     .cards-container {
-        max-height: 60vh; /* Ограничиваем высоту */
+        height: 60vh; /* Ограничиваем высоту */
         overflow-y: auto; /* Прокрутка по вертикали */
         padding: 10px;
-        gap: 5px;
+        /* gap: 5px; */
         width: 60%;
         box-shadow: inset 0 -15px 15px -15px rgba(0, 0, 0, 0.3);
+        justify-content: center;
       }
 
     .search-container {
@@ -38,7 +45,7 @@
     }
 
     .home-p {
-       font-size: small;
+       font-size: smaller;
        margin: 1.25rem 0 0.5rem;
       }
 
@@ -55,16 +62,12 @@
 
 @media screen and (max-width: 530px) {
 
-    .cards-container {
-        gap: 10px;
-      }
-
     .card {
         width: 11.5rem;
     }
 
       #searchInput {
-        width: 220px;
+        width: 250px;
         padding: 10px;
         font-size: 16px;
     }
@@ -79,6 +82,10 @@
 }
 
 @media screen and (max-width: 343px) {
+
+    .home-p {
+        font-size: small;
+       }
 
     .home-title {
         font-size: 2rem;
