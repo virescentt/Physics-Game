@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=no">
-    <title>Задача 1: Расчет кинетической энергии</title>
+    <title>Mechanika: Kinematyka</title>
     <link rel="stylesheet" href="../css/styles.css">
     <!-- <link rel="stylesheet" href="../css/vendors.css"> -->
     <link rel="stylesheet" href="../css/info-box.css">
@@ -22,29 +22,28 @@
         <div class="navbar">
 
             <a href="../index.html">
-                <p class="task-navbar_item back-link"><i class="fa-solid fa-chevron-left"></i> Все карточки</p>
+                <p class="task-navbar_item back-link"><i class="fa-solid fa-chevron-left"></i> Wszystkie kartki</p>
                 <!-- &lt; -->
             </a>
-            <p class="task-navbar_item card-number">Карточка 1</p>
+            <p class="task-navbar_item card-number">Kartka 1</p>
 
         </div>
         <div class="card-content">
             <div class="up-content">
 
 
-            <h1 class="card-title"><span style="background-color: #93c47d;">Механика:</span> Расчет кинетической энергии</h1>
-            <p class="task-content" style="font-size: 20px;">Дано тело с массой <span class="highlight">m</span> и скоростью <span class="highlight">V</span>. Вычислите кинетическую энергию тела.
-            </p>
-
+            <h1 class="card-title"><span style="background-color: #93c47d;">Mechanika:</span> Kinematyka</h1>
+            <p class="task-content">Ciało porusza się jednostajnie z prędkością <span class="highlight">v = ?</span>. Jaką odległość s pokona w czasie <span class="highlight">t = ?</span>.</p>
+                <!-- style="font-size: 20px;" -->
             <div class="formula-container">
 <!--
                 <button id="showFormulaBtn" class="button show-formula-btn" onclick="showFormula()">
                     Показать Формулу <i style="color: white;" class="fa-solid fa-eye"></i>
                     <span style="margin-top: 5px; display: block; text-align: center; color: red">( -0.5 балла)</span>
                 </button> -->
-                <p id="formula" style="display: none;" class="formula">E = 0.5 * m * V²</p>
+                <p id="formula" style="display: none;" class="formula">s = v * t</p>
 
-                <p id="formulaWarning" style="display: none;">Вы потеряли 0.5 балла за использование подсказки.</p>
+                <p id="formulaWarning" style="display: none;">Straciłeś 0,5 punktu za skorzystanie z podpowiedzi.</p>
 
             </div>
             </div>
@@ -56,25 +55,25 @@
 
                 <div class="first-input">
 
-                    <label for="m">Масса тела (m):</label>
-                    <input type="text" id="m" name="m" placeholder="? kg">
+                    <label for="v">Prędkość ciała (v):</label>
+                    <input type="text" id="v" name="v" placeholder="? m/s">
                     <!-- step="any" pattern="\d*\.?\d*" oninput="this.value = this.value.replace(/[^0-9.,]/g, '').replace(/,/g, '.');" -->
                 </div>
                 <div class="second-input">
-                    <label for="v">Скорость тела (V):</label>
-                    <input type="text" id="v" name="v" placeholder="? m/s" >
+                    <label for="t">Czas (t):</label>
+                    <input type="text" id="t" name="t" placeholder="? s" >
 
                 </div>
 
             <!-- </div> -->
 
-            <div id="error-message" style="color: red; display: none;">Пожалуйста, заполните все поля.</div>
+            <div id="error-message" style="color: red; display: none;">Proszę wypełnić wszystkie pola.</div>
 
             <button id="showFormulaBtn" class="button show-formula-btn" onclick="showFormula()">
-                Показать Формулу <i style="color: white;" class="fa-solid fa-eye"></i>
-                <span style="margin-top: 5px; display: block; text-align: center; color: red">( -0.5 балла)</span>
+                Pokaż Formułę <i style="color: white;" class="fa-solid fa-eye"></i>
+                <span style="margin-top: 5px; display: block; text-align: center; color: red">(-0.5 punktu)</span>
             </button>
-            <button id="display-answer" type="button" class="button display-answer" onclick="validateAndShowAnswer(task1Calculation, ['m', 'v'], 'resultSection', { measurementVal: 'Дж'} )">Показать ответ</button>
+            <button id="display-answer" type="button" class="button display-answer" onclick="validateAndShowAnswer(task1Calculation, ['v', 't'], 'resultSection', { measurementVal: 'm'} )">Pokaż odpowiedź</button>
             <div id="resultSection">
                 <!-- Заполняется через JS -->
             </div>
@@ -85,7 +84,7 @@
         <hr>
 
         <!-- <i class="fas fa-exclamation-triangle" style="color: orange;"></i> -->
-        <p class="warning"> Ввод предполагает использование единиц системы СИ.</p>
+        <p class="warning">Wprowadź wartości w jednostkach układu SI.</p>
 
         </div><!-- .card-content -->
 
@@ -129,8 +128,8 @@
                 <span class="close" onclick="closeModal(undefined,'cross')">&times;</span>
 
                 <div id="modalButtons" class="modal-buttons">
-                    <button class="button yes" onclick="checkAnswer(true, 'points')">Верно</button>
-                    <button class="button no" onclick="checkAnswer(false, 'points')">Неверно</button>
+                    <button class="button yes" onclick="checkAnswer(true, 'points')">Poprawnie</button>
+                    <button class="button no" onclick="checkAnswer(false, 'points')">Niepoprawnie</button>
                 </div>
 
             </div>
@@ -153,8 +152,8 @@
 
     <script>
         // Задача 1
-        function task1Calculation(m, v) {
-            return 0.5 * m * v ** 2;
+        function task1Calculation(v, t) {
+            return v * t;
         }
     </script>
     <script src="../js/scripts.js"></script>

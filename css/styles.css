@@ -428,6 +428,7 @@ input {
 
 #modalAnswerText span {
   font-size: 2rem;
+  display: block;
 }
 
 .modal-buttons button {

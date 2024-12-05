@@ -41,7 +41,7 @@ function validateAndShowAnswer(calcFunction, paramNames, resultElementId = 'resu
       formulaSpan.style.color = '';
 
       // вот здесь уже вопрос, не думаю что мне в эту секцию надо выводить ответ
-      resultSection.innerHTML = `Ответ: ${result} ${measurementVal}`;
+      resultSection.innerHTML = `Odpowiedź: ${result} ${measurementVal}`;
 
       // checkSection.style.display = 'block'; Немодальные кнопки Верно/Неверно
 
@@ -146,10 +146,12 @@ function showModal(result, measurementVal) {
     const modalAnswerText = document.getElementById('modalAnswerText');
     const warningMessage = document.querySelector('.formula-warning');
 
-    document.body.style.position = 'fixed';
+    if (window.innerWidth <= 867) { // Ширина экрана для телефонов, можно заменить на нужное значение
+        document.body.style.position = 'fixed';
+    }
 
   // Устанавливаем текст ответа
-  modalAnswerText.innerHTML = `Правильный ответ: <span> ${result} ${measurementVal} </span>`;
+  modalAnswerText.innerHTML = `Poprawna odpowiedź: <span> ${result} ${measurementVal} </span>`;
 
   // Добавляем класс для отображения модального окна
   modal.classList.add('show');

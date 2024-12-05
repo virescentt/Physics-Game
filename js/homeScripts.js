@@ -10,7 +10,7 @@ function homeCardGeneration () {
         const cardHTML = `
             <a href="cards/card-${i}.html">
                 <div class="card" data-id="${i}">
-                    Карточка ${i}
+                    Kartka ${i}
                 </div>
             </a>
         `;
