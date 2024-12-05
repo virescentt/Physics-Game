@@ -242,6 +242,34 @@ function triggerCelebration() {
 
 }
 
+// Получаем все инпуты внутри формы с id 'task-form'
+const inputs = document.querySelectorAll('#task-form input[type="text"]');
+
+// Добавляем обработчик события для каждого инпута
+inputs.forEach(input => {
+  input.addEventListener('input', function(event) {
+    let value = event.target.value;
+
+    // Заменяем запятую на точку
+    value = value.replace(',', '.');
+
+    // Убираем все символы, кроме цифр и точки
+    value = value.replace(/[^0-9.]/g, '');
+
+    // Если точка появляется больше одного раза, удаляем лишние
+    const parts = value.split('.');
+    if (parts.length > 2) {
+      value = parts[0] + '.' + parts[1];
+    }
+
+    // Ограничиваем до двух знаков после запятой
+    if (parts[1] && parts[1].length > 2) {
+      value = parts[0] + '.' + parts[1].slice(0, 2);
+    }
+
+    event.target.value = value;
+  });
+});
 
 // const infoBox = document.getElementById("infoBox");
 // const infoTab = document.getElementById("infoTab");
