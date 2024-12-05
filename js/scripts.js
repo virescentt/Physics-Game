@@ -142,9 +142,11 @@ function showFormula() {
 
 // Показываем модальное окно
 function showModal(result, measurementVal) {
-  const modal = document.getElementById('answerModal');
-  const modalAnswerText = document.getElementById('modalAnswerText');
-  const warningMessage = document.querySelector('.formula-warning');
+    const modal = document.getElementById('answerModal');
+    const modalAnswerText = document.getElementById('modalAnswerText');
+    const warningMessage = document.querySelector('.formula-warning');
+
+    document.body.style.overflow = 'hidden';
 
   // Устанавливаем текст ответа
   modalAnswerText.innerHTML = `Правильный ответ: <span> ${result} ${measurementVal} </span>`;
@@ -206,7 +208,7 @@ function checkAnswer(isCorrect, finalPointsElementId) {
   } else {
     // Логика для неправильного ответа
     resultDisplay.innerHTML = `
-    <img class="pepe-cry animate__animated animate__flipInY " src="../img/pepe_cry.png" alt="Плачущий Пепе">
+    <img class="pepe-cry animate__animated animate__rubberBand " src="../img/pepe_cry.png" alt="Плачущий Пепе">
   `;
 
   toggleBlur(true);  // Включить размытый фон

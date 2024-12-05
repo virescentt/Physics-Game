@@ -104,6 +104,11 @@
     .card-title{
         font-size: 1.6rem;
     }
+
+    .pepe-cry {
+        width: 400px;
+        height: auto;
+    }
   }
 
 @media screen and (max-width: 425px) {
@@ -112,8 +117,14 @@
         width: 75%;
         }
 
+    .pepe-cry {
+        width: 350px;
+    }
 
-
+    #modalButtons button {
+        font-size: smaller;
+        padding: 1.25rem 2rem;
+    }
 }
 
 @media screen and (max-width: 343px) {
@@ -139,5 +150,10 @@
     html {
         font-size: 13px;
     }
+
+    .pepe-cry {
+        width: 300px;
+    }
+
 
   }

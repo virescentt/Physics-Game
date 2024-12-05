@@ -566,6 +566,7 @@ input {
 .blurred-background.active {
   visibility: visible;
   opacity: 1;
+  overflow: hidden;
 }
 
 .pepe-cry {
