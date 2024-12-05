@@ -21,9 +21,9 @@
 
 @media screen and (max-width: 592px) {
 
-    .up-content {
+    /* .up-content {
         min-height: 24vh;
-    }
+    } */
 
     .task-container{
         width: 100%;
@@ -88,10 +88,10 @@
     html {
         font-size: 17px;
     }
-
+/*
     .up-content {
         min-height: 20vh;
-    }
+    } */
 
     #task-form button {
         font-size: smaller;
