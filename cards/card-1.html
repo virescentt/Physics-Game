@@ -41,7 +41,7 @@
                     Показать Формулу <i style="color: white;" class="fa-solid fa-eye"></i>
                     <span style="margin-top: 5px; display: block; text-align: center; color: red">( -0.5 балла)</span>
                 </button> -->
-                <p id="formula" style="display: none;" class="formula">s = v * t</p>
+                <p id="formula" style="display: none;" class="formula">\( s = v \cdot t \)</p>
 
                 <p id="formulaWarning" style="display: none;">Straciłeś 0,5 punktu za skorzystanie z podpowiedzi.</p>
 
@@ -55,7 +55,7 @@
 
                 <div class="first-input">
 
-                    <label for="v">Prędkość ciała (v):</label>
+                    <label for="v">Prędkość (v):</label>
                     <input type="text" id="v" name="v" placeholder="? m/s">
                     <!-- step="any" pattern="\d*\.?\d*" oninput="this.value = this.value.replace(/[^0-9.,]/g, '').replace(/,/g, '.');" -->
                 </div>
@@ -73,7 +73,7 @@
                 Pokaż Formułę <i style="color: white;" class="fa-solid fa-eye"></i>
                 <span style="margin-top: 5px; display: block; text-align: center; color: red">(-0.5 punktu)</span>
             </button>
-            <button id="display-answer" type="button" class="button display-answer" onclick="validateAndShowAnswer(task1Calculation, ['v', 't'], 'resultSection', { measurementVal: 'm'} )">Pokaż odpowiedź</button>
+            <button id="display-answer" type="button" class="button display-answer" onclick="validateAndShowAnswer(task1Calculation, ['v', 't'], 'resultSection', { measurementVal: '\\( m \\)'} )">Pokaż odpowiedź</button>
             <div id="resultSection">
                 <!-- Заполняется через JS -->
             </div>
@@ -158,5 +158,6 @@
     </script>
     <script src="../js/scripts.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </body>
 </html>

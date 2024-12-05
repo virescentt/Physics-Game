@@ -31,7 +31,6 @@ function validateAndShowAnswer(calcFunction, paramNames, resultElementId = 'resu
       // Если все поля заполнены, вычисляем и показываем ответ
       const params = paramNames.map(name => parseFloat(document.getElementById(name).value));
       let result = calcFunction(...params);  // Используем переданную функцию с параметрами
-      result = Math.round(result * 100) / 100;
       formulaBtn.classList.add('btn-disabled');
       formulaBtn.disabled = true; // Отключаем кнопку для дальнейших кликов
       answerBtn.classList.add('btn-disabled');
@@ -40,11 +39,12 @@ function validateAndShowAnswer(calcFunction, paramNames, resultElementId = 'resu
 
       formulaSpan.style.color = '';
 
+      result = formatForMathJax(result);
       // вот здесь уже вопрос, не думаю что мне в эту секцию надо выводить ответ
       resultSection.innerHTML = `Odpowiedź: ${result} ${measurementVal}`;
 
+      MathJax.typesetPromise([resultSection]);
       // checkSection.style.display = 'block'; Немодальные кнопки Верно/Неверно
-
       showModal(result, measurementVal);  // Показываем модальное окно с правильным ответом
   }
 }
@@ -152,7 +152,7 @@ function showModal(result, measurementVal) {
 
   // Устанавливаем текст ответа
   modalAnswerText.innerHTML = `Poprawna odpowiedź: <span> ${result} ${measurementVal} </span>`;
-
+  MathJax.typesetPromise([modalAnswerText]);
   // Добавляем класс для отображения модального окна
   modal.classList.add('show');
   toggleBlur(true);
@@ -275,6 +275,21 @@ inputs.forEach(input => {
   });
 });
 
+
+function formatForMathJax(value) {
+    if (value < 0.005 && value !== 0) {
+        const expValue = value.toExponential(2);
+        const [base, exponent] = expValue.split('e');
+        console.log(`${value} from if`)
+        return `\\(${parseFloat(base)} \\times 10^{${parseInt(exponent)}}\\)`;
+    } else if (value === 0) {
+        return value
+    } else {
+        console.log(`${value} before common return`);
+        value = Math.round(value * 100) / 100;
+        return value;
+    }
+}
 // const infoBox = document.getElementById("infoBox");
 // const infoTab = document.getElementById("infoTab");
 
