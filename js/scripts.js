@@ -280,10 +280,15 @@ function formatForMathJax(value) {
     if (value < 0.005 && value !== 0) {
         const expValue = value.toExponential(2);
         const [base, exponent] = expValue.split('e');
-        console.log(`${value} from if`)
+        console.log(`${value} from if`);
         return `\\(${parseFloat(base)} \\times 10^{${parseInt(exponent)}}\\)`;
     } else if (value === 0) {
-        return value
+        return value;
+    } else if (value >= 1000) {
+        // Форматируем число с приставкой кило (k) для значений больше 1000
+        const kiloValue = value / 1000;
+        console.log(`${value} from kilo`);
+        return `${kiloValue.toFixed(2)}k`;
     } else {
         console.log(`${value} before common return`);
         value = Math.round(value * 100) / 100;
