@@ -146,7 +146,7 @@ function showModal(result, measurementVal) {
     const modalAnswerText = document.getElementById('modalAnswerText');
     const warningMessage = document.querySelector('.formula-warning');
 
-    document.body.style.overflow = 'hidden';
+    document.body.style.position = 'fixed';
 
   // Устанавливаем текст ответа
   modalAnswerText.innerHTML = `Правильный ответ: <span> ${result} ${measurementVal} </span>`;
