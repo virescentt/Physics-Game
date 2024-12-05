@@ -556,7 +556,9 @@ input {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5); /* затемнение */
-  backdrop-filter: blur(.3125rem); /* эффект размытия */
+  /* backdrop-filter: blur(.3125rem); эффект размытия */
+  -webkit-backdrop-filter: blur(.3125rem);
+  backdrop-filter: blur(.3125rem);
   visibility: hidden; /* по умолчанию скрыто */
   opacity: 0;
   transition: visibility 0.3s ease, opacity 0.3s ease; /* плавное появление */
