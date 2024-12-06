@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="pl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=no">
-    <title>Mechanika: Impuls</title>
+    <title>Mechanika: Tarcie ślizgowe</title>
     <link rel="stylesheet" href="../css/styles.css">
     <!-- <link rel="stylesheet" href="../css/vendors.css"> -->
     <link rel="stylesheet" href="../css/info-box.css">
@@ -26,16 +26,16 @@
                 <p class="task-navbar_item back-link"><i class="fa-solid fa-chevron-left"></i> Wszystkie kartki</p>
                 <!-- &lt; -->
             </a>
-            <p class="task-navbar_item card-number">Kartka 5</p>
+            <p class="task-navbar_item card-number">Kartka 13</p>
 
         </div>
         <div class="card-content">
             <div class="up-content">
 
 
-            <h1 class="card-title"><span style="background-color: #93c47d;">Mechanika:</span> Impuls</h1>
-            <p class="task-content">Znajdź impuls ciała o masie
-                <span class="highlight">\(m = ?\)</span>, poruszającego się z prędkością <span class="highlight">\(v = ?\)</span>.</p>
+            <h1 class="card-title"><span style="background-color: #cc4125;">Mechanika:</span> Tarcie ślizgowe</h1>
+            <p class="task-content">Blok o masie
+                <span class="highlight">\(m = ?\)</span> leży na nachylonej powierzchni pod kątem <span class="highlight">\( α = ?\)</span>. Współczynnik tarcia między bloczkiem a powierzchnią wynosi <span class="highlight">\(μ = 0.3\)</span>. Oblicz siłę tarcia <span class="highlight">\( F_t \)</span> przy zsuwaniu bloku w dół, <span class="highlight">\(g = 9.8 \frac{m}{s^2}\)</span>.</p>
                 <!-- style="font-size: 20px;" -->
             <div class="formula-container">
 <!--
@@ -43,7 +43,7 @@
                     Показать Формулу <i style="color: white;" class="fa-solid fa-eye"></i>
                     <span style="margin-top: 5px; display: block; text-align: center; color: red">( -0.5 балла)</span>
                 </button> -->
-                <p id="formula" style="display: none;" class="formula">\( p = mv \)</p>
+                <p id="formula" style="display: none;" class="formula">\( N = mg \cdot cos(α) \)</p>
 
                 <p id="formulaWarning" style="display: none;">Straciłeś 0,5 punktu za skorzystanie z podpowiedzi.</p>
 
@@ -62,8 +62,8 @@
                     <!-- step="any" pattern="\d*\.?\d*" oninput="this.value = this.value.replace(/[^0-9.,]/g, '').replace(/,/g, '.');" -->
                 </div>
                 <div class="second-input">
-                    <label for="v">Prędkość (v):</label>
-                    <input type="text" id="v" name="v" placeholder="? m/s" >
+                    <label for="a">Kąnt (α):</label>
+                    <input type="text" id="a" name="a" placeholder="? °" >
 
                 </div>
 
@@ -75,7 +75,7 @@
                 Pokaż Formułę <i style="color: white;" class="fa-solid fa-eye"></i>
                 <span style="margin-top: 5px; display: block; text-align: center; color: red">(-0.5 punktu)</span>
             </button>
-            <button id="display-answer" type="button" class="button display-answer" onclick="validateAndShowAnswer(task1Calculation, ['m', 'v'], 'resultSection', { measurementVal: '\\( \\frac{kg \\cdot m}{s} \\) '} )">Pokaż odpowiedź</button>
+            <button id="display-answer" type="button" class="button display-answer" onclick="validateAndShowAnswer(task1Calculation, ['m', 'a'], 'resultSection', { measurementVal: '\\( N \\) '} )">Pokaż odpowiedź</button>
             <div id="resultSection">
                 <!-- Заполняется через JS -->
             </div>
@@ -155,7 +155,7 @@
     <script>
         // Задача 1
         function task1Calculation(a, b, c, d) {
-            return a * b;
+            return 0.3 * a * G * 0.0001;
         }
     </script>
     <script src="../js/scripts.js"></script>

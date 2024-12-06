@@ -55,7 +55,7 @@ hr {
   display: flex;
   align-items: center;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
 }
 
 .home-title {

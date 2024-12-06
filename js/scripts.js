@@ -156,7 +156,6 @@ function showModal(result, measurementVal) {
   // Добавляем класс для отображения модального окна
   modal.classList.add('show');
   toggleBlur(true);
-  warningMessage.style.color = 'darkgrey';
 
 }
 

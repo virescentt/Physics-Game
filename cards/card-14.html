@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=no">
-    <title>Mechanika: Impuls</title>
+    <title>Mechanika: Przyspieszenie zmienne</title>
     <link rel="stylesheet" href="../css/styles.css">
     <!-- <link rel="stylesheet" href="../css/vendors.css"> -->
     <link rel="stylesheet" href="../css/info-box.css">
@@ -26,16 +26,16 @@
                 <p class="task-navbar_item back-link"><i class="fa-solid fa-chevron-left"></i> Wszystkie kartki</p>
                 <!-- &lt; -->
             </a>
-            <p class="task-navbar_item card-number">Kartka 5</p>
+            <p class="task-navbar_item card-number">Kartka 14</p>
 
         </div>
         <div class="card-content">
             <div class="up-content">
 
 
-            <h1 class="card-title"><span style="background-color: #93c47d;">Mechanika:</span> Impuls</h1>
-            <p class="task-content">Znajdź impuls ciała o masie
-                <span class="highlight">\(m = ?\)</span>, poruszającego się z prędkością <span class="highlight">\(v = ?\)</span>.</p>
+            <h1 class="card-title"><span style="background-color: #cc4125;">Mechanika:</span> Przyspieszenie zmienne</h1>
+            <p class="task-content">Skrzynkę o masie
+                <span class="highlight">\(m = ?\)</span> podnoszą z przyspieszeniem zmiennym <span class="highlight">\(a(t)=2-0.1t\frac{m}{s^2}\)</span>, gdzie t – czas w sekundach. Skrzynkę podnoszono na wysokość <span class="highlight">\(h = ?\)</span>, a czas podnoszenia wyniósł <span class="highlight">\(t = ?\)</span>. Oblicz wykonaną pracę przy podnoszeniu skrzynki.</p>
                 <!-- style="font-size: 20px;" -->
             <div class="formula-container">
 <!--
@@ -43,7 +43,7 @@
                     Показать Формулу <i style="color: white;" class="fa-solid fa-eye"></i>
                     <span style="margin-top: 5px; display: block; text-align: center; color: red">( -0.5 балла)</span>
                 </button> -->
-                <p id="formula" style="display: none;" class="formula">\( p = mv \)</p>
+                <p id="formula" style="display: none;" class="formula">\( a_śr = \frac{a(t_0) + a(Δt)}{2} \)</p>
 
                 <p id="formulaWarning" style="display: none;">Straciłeś 0,5 punktu za skorzystanie z podpowiedzi.</p>
 
@@ -62,8 +62,13 @@
                     <!-- step="any" pattern="\d*\.?\d*" oninput="this.value = this.value.replace(/[^0-9.,]/g, '').replace(/,/g, '.');" -->
                 </div>
                 <div class="second-input">
-                    <label for="v">Prędkość (v):</label>
-                    <input type="text" id="v" name="v" placeholder="? m/s" >
+                    <label for="h">Wysokość (h):</label>
+                    <input type="text" id="h" name="h" placeholder="? m" >
+
+                </div>
+                <div class="third-input">
+                    <label for="t">Czas (t):</label>
+                    <input type="text" id="t" name="t" placeholder="? s" >
 
                 </div>
 
@@ -75,7 +80,7 @@
                 Pokaż Formułę <i style="color: white;" class="fa-solid fa-eye"></i>
                 <span style="margin-top: 5px; display: block; text-align: center; color: red">(-0.5 punktu)</span>
             </button>
-            <button id="display-answer" type="button" class="button display-answer" onclick="validateAndShowAnswer(task1Calculation, ['m', 'v'], 'resultSection', { measurementVal: '\\( \\frac{kg \\cdot m}{s} \\) '} )">Pokaż odpowiedź</button>
+            <button id="display-answer" type="button" class="button display-answer" onclick="validateAndShowAnswer(task1Calculation, ['m', 'h', 't'], 'resultSection', { measurementVal: '\\( J \\) '} )">Pokaż odpowiedź</button>
             <div id="resultSection">
                 <!-- Заполняется через JS -->
             </div>
@@ -155,7 +160,11 @@
     <script>
         // Задача 1
         function task1Calculation(a, b, c, d) {
-            return a * b;
+            let a_prz_sr = ((2 - 0.1 * 0) + (2 - 0.1 * c))/(2);
+            let F_sila = a * (G + a_prz_sr);
+            const odpow = F_sila * b;
+            // console.log(`there's odpowiedz - ${odpow}`)
+            return odpow;
         }
     </script>
     <script src="../js/scripts.js"></script>

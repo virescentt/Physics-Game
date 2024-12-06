@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=no">
-    <title>Mechanika: Impuls</title>
+    <title>Mechanika: Dynamika układu</title>
     <link rel="stylesheet" href="../css/styles.css">
     <!-- <link rel="stylesheet" href="../css/vendors.css"> -->
     <link rel="stylesheet" href="../css/info-box.css">
@@ -26,16 +26,16 @@
                 <p class="task-navbar_item back-link"><i class="fa-solid fa-chevron-left"></i> Wszystkie kartki</p>
                 <!-- &lt; -->
             </a>
-            <p class="task-navbar_item card-number">Kartka 5</p>
+            <p class="task-navbar_item card-number">Kartka 12</p>
 
         </div>
         <div class="card-content">
             <div class="up-content">
 
 
-            <h1 class="card-title"><span style="background-color: #93c47d;">Mechanika:</span> Impuls</h1>
-            <p class="task-content">Znajdź impuls ciała o masie
-                <span class="highlight">\(m = ?\)</span>, poruszającego się z prędkością <span class="highlight">\(v = ?\)</span>.</p>
+            <h1 class="card-title"><span style="background-color: #cc4125;">Mechanika:</span> Dynamika układu</h1>
+            <p class="task-content">Dwa ciężary o masach
+                <span class="highlight">\(m_1= 1.5 kg\)</span> i <span class="highlight">\(m_2= ?\)</span> są połączone nieważnym sznurkiem, przełożonym przez blok. Ciężar m1 leży na nachylonej powierzchni pod kątem<span class="highlight">\( α = ?\)</span>, na której działa siła tarcia o współczynniku <span class="highlight">\(μ = 0.2\)</span>. Ciężar m2 wisi pionowo. Oblicz przyspieszenie układu, <span class="highlight">\(g = 9.8 \frac{m}{s^2}\)</span>.</p>
                 <!-- style="font-size: 20px;" -->
             <div class="formula-container">
 <!--
@@ -43,7 +43,7 @@
                     Показать Формулу <i style="color: white;" class="fa-solid fa-eye"></i>
                     <span style="margin-top: 5px; display: block; text-align: center; color: red">( -0.5 балла)</span>
                 </button> -->
-                <p id="formula" style="display: none;" class="formula">\( p = mv \)</p>
+                <p id="formula" style="display: none;" class="formula">\( a = \frac{m_1g - μm_1g \cdot cos(α) - m_1g \cdot sin(α) }{m_1 + m_2} \)</p>
 
                 <p id="formulaWarning" style="display: none;">Straciłeś 0,5 punktu za skorzystanie z podpowiedzi.</p>
 
@@ -57,13 +57,13 @@
 
                 <div class="first-input">
 
-                    <label for="m">Masa (m):</label>
+                    <label for="m">Masa (m_2):</label>
                     <input type="text" id="m" name="m" placeholder="? kg">
                     <!-- step="any" pattern="\d*\.?\d*" oninput="this.value = this.value.replace(/[^0-9.,]/g, '').replace(/,/g, '.');" -->
                 </div>
                 <div class="second-input">
-                    <label for="v">Prędkość (v):</label>
-                    <input type="text" id="v" name="v" placeholder="? m/s" >
+                    <label for="a">Kąnt (α):</label>
+                    <input type="text" id="a" name="a" placeholder="? °" >
 
                 </div>
 
@@ -75,7 +75,7 @@
                 Pokaż Formułę <i style="color: white;" class="fa-solid fa-eye"></i>
                 <span style="margin-top: 5px; display: block; text-align: center; color: red">(-0.5 punktu)</span>
             </button>
-            <button id="display-answer" type="button" class="button display-answer" onclick="validateAndShowAnswer(task1Calculation, ['m', 'v'], 'resultSection', { measurementVal: '\\( \\frac{kg \\cdot m}{s} \\) '} )">Pokaż odpowiedź</button>
+            <button id="display-answer" type="button" class="button display-answer" onclick="validateAndShowAnswer(task1Calculation, ['m', 'a'], 'resultSection', { measurementVal: '\\( N \\) '} )">Pokaż odpowiedź</button>
             <div id="resultSection">
                 <!-- Заполняется через JS -->
             </div>
@@ -155,7 +155,7 @@
     <script>
         // Задача 1
         function task1Calculation(a, b, c, d) {
-            return a * b;
+            return (a * G - 0.2 * a * G * 0.00001 - a * G * 0.0001)/(1.5 + a);
         }
     </script>
     <script src="../js/scripts.js"></script>
