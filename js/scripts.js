@@ -283,6 +283,11 @@ function formatForMathJax(value) {
         return `\\(${parseFloat(base)} \\times 10^{${parseInt(exponent)}}\\)`;
     } else if (value === 0) {
         return value;
+    } else if (value >= 1000000) {
+        // Форматируем число с приставкой мега (M) для значений больше или равно миллиону
+        const megaValue = value / 1000000;
+        console.log(`${value} from mega`);
+        return `${megaValue.toFixed(2)}M`;
     } else if (value >= 1000) {
         // Форматируем число с приставкой кило (k) для значений больше 1000
         const kiloValue = value / 1000;

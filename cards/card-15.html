@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=no">
-    <title>Mechanika: Przyspieszenie dośrodkowe</title>
+    <title>Termodynamika: Zmiana temperatury ciała</title>
     <link rel="stylesheet" href="../css/styles.css">
     <!-- <link rel="stylesheet" href="../css/vendors.css"> -->
     <link rel="stylesheet" href="../css/info-box.css">
     <link rel="stylesheet" href="../css/media.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-
 
 
 </head>
@@ -26,16 +25,16 @@
                 <p class="task-navbar_item back-link"><i class="fa-solid fa-chevron-left"></i> Wszystkie kartki</p>
                 <!-- &lt; -->
             </a>
-            <p class="task-navbar_item card-number">Kartka 11</p>
+            <p class="task-navbar_item card-number">Kartka 15</p>
 
         </div>
         <div class="card-content">
             <div class="up-content">
 
 
-            <h1 class="card-title"><span style="background-color: #6fa8dc;">Mechanika:</span> Przyspieszenie dośrodkowe</h1>
-            <p class="task-content">Ciało o masie
-                <span class="highlight">\(m = ?\)</span> porusza się po okręgu o promieniu <span class="highlight">\(r = 2 m\)</span> z prędkością <span class="highlight">\(v = ?\)</span>. Znajdź siłę działającą na ciało, utrzymującą je w ruchu po okręgu.</p>
+            <h1 class="card-title"><span style="background-color: #93c47d;">Termodynamika:</span> Zmiana temperatury ciała</h1>
+            <p class="task-content">Oblicz ilość ciepła potrzebną do podgrzania
+                <span class="highlight">\(m = ? \)</span> oleju rafinowanego od <span class="highlight">\(T_1 = ? \)</span> do <span class="highlight">\(T_2 = 500 K (227°C) \)</span>, którego pojemność cieplna <span class="highlight">\( c = 2000 \frac{J}{kg \cdot K} \)</span>.</p>
                 <!-- style="font-size: 20px;" -->
             <div class="formula-container">
 <!--
@@ -43,7 +42,7 @@
                     Показать Формулу <i style="color: white;" class="fa-solid fa-eye"></i>
                     <span style="margin-top: 5px; display: block; text-align: center; color: red">( -0.5 балла)</span>
                 </button> -->
-                <p id="formula" style="display: none;" class="formula">\( a_d = \frac{v^2}{r} \)</p>
+                <p id="formula" style="display: none;" class="formula">\( Q = mcΔT \)</p>
 
                 <p id="formulaWarning" style="display: none;">Straciłeś 0,5 punktu za skorzystanie z podpowiedzi.</p>
 
@@ -62,8 +61,8 @@
                     <!-- step="any" pattern="\d*\.?\d*" oninput="this.value = this.value.replace(/[^0-9.,]/g, '').replace(/,/g, '.');" -->
                 </div>
                 <div class="second-input">
-                    <label for="v">Prędkość (v):</label>
-                    <input type="text" id="v" name="v" placeholder="? m/s" >
+                    <label for="t">Temperatura (T_1):</label>
+                    <input type="text" id="t" name="t" placeholder="? K" >
 
                 </div>
 
@@ -75,7 +74,7 @@
                 Pokaż Formułę <i style="color: white;" class="fa-solid fa-eye"></i>
                 <span style="margin-top: 5px; display: block; text-align: center; color: red">(-0.5 punktu)</span>
             </button>
-            <button id="display-answer" type="button" class="button display-answer" onclick="validateAndShowAnswer(task1Calculation, ['m', 'v'], 'resultSection', { measurementVal: '\\( N \\) '} )">Pokaż odpowiedź</button>
+            <button id="display-answer" type="button" class="button display-answer" onclick="validateAndShowAnswer(task1Calculation, ['m', 't'], 'resultSection', { measurementVal: '\\( J \\)'} )">Pokaż odpowiedź</button>
             <div id="resultSection">
                 <!-- Заполняется через JS -->
             </div>
@@ -93,7 +92,7 @@
         <div class="poka-shto-pizduj">
         <div class="info-container">
             <div class="info-tab" id="infoTab"><i class="fa-solid fa-chevron-left"></i></div>
-            Боковой блок с уровнем сложности
+            <!-- Боковой блок с уровнем сложности -->
             <div class="info-box" id="infoBox">
 
                 <div class="navbar info-box-navbar">
@@ -114,9 +113,9 @@
                         <span id="points-animation" style="position: relative; display: inline-block;"></span>
                     </p>
 
-                </div>.info-box-content
+                </div><!-- .info-box-content -->
 
-            </div>.info-box
+            </div><!-- .info-box -->
 
         </div>
         </div>
@@ -155,14 +154,13 @@
     <script>
         // Задача 1
         function task1Calculation(a, b, c, d) {
-            let prz_d = (Math.pow(b, 2))/2;
-            let F_sila = a * prz_d;
-            return F_sila;
+            const odp = a * 2000 * (500 - b);
+            console.log(odp);
+            return odp;
         }
     </script>
     <script src="../js/scripts.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-
 </body>
 </html>
