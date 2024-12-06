@@ -53,6 +53,10 @@
        margin: 1.25rem 0 0.5rem;
       }
 
+    .footer {
+    font-size: smaller;
+    }
+
     .author {
         margin-right: 10px;
     }
@@ -129,7 +133,7 @@
 
 @media screen and (max-width: 343px) {
 
-    .home-p {
+    .home-p .footer {
         font-size: small;
        }
 

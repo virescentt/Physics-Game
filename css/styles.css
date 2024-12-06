@@ -112,10 +112,8 @@ hr {
   width: 100%;
   color: rgb(157, 156, 156);
   height: 6.25rem;
-  font-size: medium;
   text-align: center;
   justify-content: center;
-  font-size: medium;
 }
 
 .author {
@@ -172,7 +170,7 @@ hr {
   transition: all 0.3s ease;
   align-items: center;
   background-color: #f4f4f4;
-  padding: 1.25rem;
+  padding: 0.625rem 1.25rem;
   width: 100%;
 }
 
