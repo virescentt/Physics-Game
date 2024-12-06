@@ -206,7 +206,12 @@ function checkAnswer(isCorrect, finalPointsElementId) {
     `;
 
     triggerCelebration(); // Анимация салюта
-
+      // Удаляем сообщение через несколько секунд
+      setTimeout(() => {
+        resultDisplay.remove();
+        toggleBlur(false);
+        location.reload();
+    }, 1500);
   } else {
     // Логика для неправильного ответа
     resultDisplay.innerHTML = `
@@ -214,15 +219,15 @@ function checkAnswer(isCorrect, finalPointsElementId) {
   `;
 
   toggleBlur(true);  // Включить размытый фон
-
+      // Удаляем сообщение через несколько секунд
+      setTimeout(() => {
+        resultDisplay.remove();
+        toggleBlur(false);
+        location.reload();
+    }, 2000);
   }
 
-      // Удаляем сообщение через несколько секунд
-setTimeout(() => {
-    resultDisplay.remove();
-    toggleBlur(false);
-    location.reload();
-}, 1800);
+
 
 //   // Удаляем сообщение через несколько секунд
 //   setTimeout(() => {
