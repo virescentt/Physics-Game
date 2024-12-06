@@ -41,7 +41,7 @@ function validateAndShowAnswer(calcFunction, paramNames, resultElementId = 'resu
 
       result = formatForMathJax(result);
       // вот здесь уже вопрос, не думаю что мне в эту секцию надо выводить ответ
-      resultSection.innerHTML = `Odpowiedź: ${result} ${measurementVal}`;
+      resultSection.innerHTML = `<p style="margin-top: 1rem; font-size: 1.5rem; ">Odpowiedź: ${result} ${measurementVal}</p>`;
 
       MathJax.typesetPromise([resultSection]);
       // checkSection.style.display = 'block'; Немодальные кнопки Верно/Неверно
@@ -206,22 +206,30 @@ function checkAnswer(isCorrect, finalPointsElementId) {
     `;
 
     triggerCelebration(); // Анимация салюта
+
   } else {
     // Логика для неправильного ответа
     resultDisplay.innerHTML = `
-    <img class="pepe-cry animate__animated animate__rubberBand " src="../img/pepe_cry.png" alt="Плачущий Пепе">
+    <img class="pepe-cry animate__animated animate__flipInY" src="../img/cryNigga.gif" alt="Плачущий Пепе">
   `;
 
   toggleBlur(true);  // Включить размытый фон
 
   }
 
-  // Удаляем сообщение через несколько секунд
-  setTimeout(() => {
+      // Удаляем сообщение через несколько секунд
+setTimeout(() => {
     resultDisplay.remove();
     toggleBlur(false);
     location.reload();
-  }, 2000);
+}, 1800);
+
+//   // Удаляем сообщение через несколько секунд
+//   setTimeout(() => {
+//     resultDisplay.remove();
+//     toggleBlur(false);
+//     location.reload();
+//   }, 4000);
 
 
 }
@@ -276,18 +284,19 @@ inputs.forEach(input => {
 
 
 function formatForMathJax(value) {
-    if (value < 0.005 && value !== 0) {
+    if (value === 0) {
+        return value;
+    } else if (value < 0.005 && value !== 0) {
         const expValue = value.toExponential(2);
         const [base, exponent] = expValue.split('e');
         console.log(`${value} from if`);
         return `\\(${parseFloat(base)} \\times 10^{${parseInt(exponent)}}\\)`;
-    } else if (value === 0) {
-        return value;
     } else if (value >= 1000000) {
-        // Форматируем число с приставкой мега (M) для значений больше или равно миллиону
-        const megaValue = value / 1000000;
-        console.log(`${value} from mega`);
-        return `${megaValue.toFixed(2)}M`;
+        // Форматируем число в стандартном виде для значений больше или равно миллиону
+        const expValue = value.toExponential(2);
+        const [base, exponent] = expValue.split('e');
+        console.log(`${value} from standard`);
+        return `\\(${parseFloat(base)} \\times 10^{${parseInt(exponent)}}\\)`;
     } else if (value >= 1000) {
         // Форматируем число с приставкой кило (k) для значений больше 1000
         const kiloValue = value / 1000;

@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=no">
-    <title>Mechanika: Moc</title>
+    <title>Termodynamika: Ciepło topnienia</title>
     <link rel="stylesheet" href="../css/styles.css">
     <!-- <link rel="stylesheet" href="../css/vendors.css"> -->
     <link rel="stylesheet" href="../css/info-box.css">
     <link rel="stylesheet" href="../css/media.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-
 
 
 </head>
@@ -26,16 +25,16 @@
                 <p class="task-navbar_item back-link"><i class="fa-solid fa-chevron-left"></i> Wszystkie kartki</p>
                 <!-- &lt; -->
             </a>
-            <p class="task-navbar_item card-number">Kartka 8</p>
+            <p class="task-navbar_item card-number">Kartka 16</p>
 
         </div>
         <div class="card-content">
             <div class="up-content">
 
 
-            <h1 class="card-title"><span style="background-color: #6fa8dc;">Mechanika:</span> Moc</h1>
-            <p class="task-content">Silnik elektryczny w czasie
-                <span class="highlight">\(t = ?\)</span> podnosi ciężar o masie <span class="highlight">\(m = ?\)</span> na wysokość <span class="highlight">\(h = ?\)</span>. Znajdź średnią moc, jeśli <span class="highlight">\(g = 9.8 \frac{m}{s^2}\)</span>.</p>
+            <h1 class="card-title"><span style="background-color: #93c47d;">Termodynamika:</span> Ciepło topnienia</h1>
+            <p class="task-content">Ile ciepła potrzeba, aby roztopić
+                <span class="highlight">\(m = ?\)</span> lodu w temperaturze go topnienia? Ciepło topnienia lodu <span class="highlight">\(λ = 3.4 \cdot 10^5\frac{J}{kg} \)</span>.</p>
                 <!-- style="font-size: 20px;" -->
             <div class="formula-container">
 <!--
@@ -43,7 +42,7 @@
                     Показать Формулу <i style="color: white;" class="fa-solid fa-eye"></i>
                     <span style="margin-top: 5px; display: block; text-align: center; color: red">( -0.5 балла)</span>
                 </button> -->
-                <p id="formula" style="display: none;" class="formula">\( P_{moc} = \frac{W}{t} \)</p>
+                <p id="formula" style="display: none;" class="formula">\( Q = mλ \)</p>
 
                 <p id="formulaWarning" style="display: none;">Straciłeś 0,5 punktu za skorzystanie z podpowiedzi.</p>
 
@@ -55,21 +54,11 @@
             <form id="task-form">
             <!-- <div class="input-container"> -->
 
-                <div class="third-input">
-                    <label for="t">Czas (t):</label>
-                    <input type="text" id="t" name="t" placeholder="? s" >
-
-                </div>
                 <div class="first-input">
 
                     <label for="m">Masa (m):</label>
                     <input type="text" id="m" name="m" placeholder="? kg">
                     <!-- step="any" pattern="\d*\.?\d*" oninput="this.value = this.value.replace(/[^0-9.,]/g, '').replace(/,/g, '.');" -->
-                </div>
-                <div class="second-input">
-                    <label for="h">Wysokość (h):</label>
-                    <input type="text" id="h" name="h" placeholder="? m" >
-
                 </div>
 
             <!-- </div> -->
@@ -80,7 +69,7 @@
                 Pokaż Formułę <i style="color: white;" class="fa-solid fa-eye"></i>
                 <span style="margin-top: 5px; display: block; text-align: center; color: red">(-0.5 punktu)</span>
             </button>
-            <button id="display-answer" type="button" class="button display-answer" onclick="validateAndShowAnswer(task1Calculation, ['t', 'm', 'h'], 'resultSection', { measurementVal: '\\( W \\) '} )">Pokaż odpowiedź</button>
+            <button id="display-answer" type="button" class="button display-answer" onclick="validateAndShowAnswer(task1Calculation, ['m'], 'resultSection', { measurementVal: '\\( J \\)'} )">Pokaż odpowiedź</button>
             <div id="resultSection">
                 <!-- Заполняется через JS -->
             </div>
@@ -98,7 +87,7 @@
         <div class="poka-shto-pizduj">
         <div class="info-container">
             <div class="info-tab" id="infoTab"><i class="fa-solid fa-chevron-left"></i></div>
-            Боковой блок с уровнем сложности
+            <!-- Боковой блок с уровнем сложности -->
             <div class="info-box" id="infoBox">
 
                 <div class="navbar info-box-navbar">
@@ -119,9 +108,9 @@
                         <span id="points-animation" style="position: relative; display: inline-block;"></span>
                     </p>
 
-                </div>.info-box-content
+                </div><!-- .info-box-content -->
 
-            </div>.info-box
+            </div><!-- .info-box -->
 
         </div>
         </div>
@@ -160,12 +149,11 @@
     <script>
         // Задача 1
         function task1Calculation(a, b, c, d) {
-            return (b * c * G)/a;
+            return a * 3.4 * Math.pow(10, 5)
         }
     </script>
     <script src="../js/scripts.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-
 </body>
 </html>

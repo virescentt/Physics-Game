@@ -110,7 +110,7 @@
     }
 
     .pepe-cry {
-        width: 400px;
+        width: 10rem;
         height: auto;
     }
   }
@@ -122,7 +122,6 @@
         }
 
     .pepe-cry {
-        width: 350px;
     }
 
     #modalButtons button {
@@ -156,7 +155,6 @@
     }
 
     .pepe-cry {
-        width: 300px;
     }
 
 
