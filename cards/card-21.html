@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=no">
-    <title>Termodynamika: Proces izobaryczny</title>
+    <title>Termodynamika: Cykl Carnota</title>
     <link rel="stylesheet" href="../css/styles.css">
     <!-- <link rel="stylesheet" href="../css/vendors.css"> -->
     <link rel="stylesheet" href="../css/info-box.css">
@@ -26,16 +26,16 @@
                 <p class="task-navbar_item back-link"><i class="fa-solid fa-chevron-left"></i> Wszystkie kartki</p>
                 <!-- &lt; -->
             </a>
-            <p class="task-navbar_item card-number">Kartka 20</p>
+            <p class="task-navbar_item card-number">Kartka 21</p>
 
         </div>
         <div class="card-content">
             <div class="up-content">
 
 
-            <h1 class="card-title"><span style="background-color: #6fa8dc;">Termodynamika:</span> Proces izobaryczny</h1>
-            <p class="task-content">Gaz o masie
-                <span class="highlight">\(m = 0.1 kg\)</span> podgrzano izobarycznie od <span class="highlight">\(T_1 = ?\)</span> do <span class="highlight">\(T_2 = ?\)</span>. Oblicz wykonaną pracę gazu, jeśli jego masa molowa <span class="highlight">\(M = ?\)</span>. Stała gazowa <span class="highlight">\(R = 8.31 \frac{J}{mol \cdot K} \)</span>.</p>
+            <h1 class="card-title"><span style="background-color: #cc4125;">Termodynamika:</span> Cykl Carnota</h1>
+            <p class="task-content">Maszyna Carnota pracuje z gazem idealnym. Temperatura grzałki
+                <span class="highlight">\(T_1 = ?\)</span>, temperatura chłodnicy <span class="highlight">\(T_2 = ?\)</span>, <span class="highlight">\(T_1 > T_2\)</span>. Gaz w cyklu wykonuje pracę <span class="highlight">\(W = ?\)</span>. Oblicz ilość ciepła przekazanego chłodnicy<span class="highlight">\( (Q_2) \)</span>.</p>
                 <!-- style="font-size: 20px;" -->
             <div class="formula-container">
 <!--
@@ -43,7 +43,7 @@
                     Показать Формулу <i style="color: white;" class="fa-solid fa-eye"></i>
                     <span style="margin-top: 5px; display: block; text-align: center; color: red">( -0.5 балла)</span>
                 </button> -->
-                <p id="formula" style="display: none;" class="formula">\( W = n \cdot RΔT \)</p>
+                <p id="formula" style="display: none;" class="formula">\( Q_1 = \frac{W}{η} \)</p>
 
                 <p id="formulaWarning" style="display: none;">Straciłeś 0,5 punktu za skorzystanie z podpowiedzi.</p>
 
@@ -64,8 +64,8 @@
                     <input type="text" id="t2" name="t2" placeholder="? K" >
                 </div>
                 <div class="third-input">
-                    <label for="m">Masa molowa (M):</label>
-                    <input type="text" id="m" name="m" placeholder="? g/mol" >
+                    <label for="w">Praca (W):</label>
+                    <input type="text" id="w" name="w" placeholder="? J" >
 
                 </div>
 
@@ -77,7 +77,7 @@
                 Pokaż Formułę <i style="color: white;" class="fa-solid fa-eye"></i>
                 <span style="margin-top: 5px; display: block; text-align: center; color: red">(-0.5 punktu)</span>
             </button>
-            <button id="display-answer" type="button" class="button display-answer" onclick="validateAndShowAnswer(task1Calculation, ['t1', 't2', 'm'], 'resultSection', { measurementVal: '\\( J \\) '} )">Pokaż odpowiedź</button>
+            <button id="display-answer" type="button" class="button display-answer" onclick="validateAndShowAnswer(task1Calculation, ['t1', 't2', 'w'], 'resultSection', { measurementVal: '\\( J \\) '} )">Pokaż odpowiedź</button>
             <div id="resultSection">
                 <!-- Заполняется через JS -->
             </div>
@@ -157,9 +157,10 @@
     <script>
         // Задача 1
         function task1Calculation(a, b, c, d) {
-            let n = 0.1/c;
-            const w = n * 8.31 * (b - a);
-            return w;
+            let kpd = 1 - (b/a);
+            let q_1 = c/kpd;
+            const q_2 = q_1 - c;
+            return q_2;
         }
     </script>
     <script src="../js/scripts.js"></script>
