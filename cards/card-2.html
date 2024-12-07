@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="pl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=no">
@@ -35,7 +35,7 @@
 
             <h1 class="card-title"><span style="background-color: #93c47d;">Mechanika:</span> Dynamika</h1>
             <p class="task-content">Na ciało o masie
-                <span class="highlight">\( m = ? \)</span> działa siła <span class="highlight">\( F = ? \)</span>. Jakie jest jego przyspieszenie?</p>
+                <span class="highlight">\( m = ? \)</span> działa siła <span class="highlight">\( F = 450 N \)</span>. Jakie jest jego przyspieszenie?</p>
                 <!-- style="font-size: 20px;" -->
             <div class="formula-container">
 <!--
@@ -60,11 +60,6 @@
                     <label for="m">Masa (m):</label>
                     <input type="text" id="m" name="m" placeholder="? kg">
                     <!-- step="any" pattern="\d*\.?\d*" oninput="this.value = this.value.replace(/[^0-9.,]/g, '').replace(/,/g, '.');" -->
-                </div>
-                <div class="second-input">
-                    <label for="f">Siła (F):</label>
-                    <input type="text" id="f" name="f" placeholder="? N" >
-
                 </div>
 
             <!-- </div> -->
@@ -155,7 +150,7 @@
     <script>
         // Задача 1
         function task1Calculation(a, b, c, d) {
-            return b / a;
+            return 450 / a;
         }
     </script>
     <script src="../js/scripts.js"></script>

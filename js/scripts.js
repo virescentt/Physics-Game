@@ -266,6 +266,10 @@ inputs.forEach(input => {
   input.addEventListener('input', function(event) {
     let value = event.target.value;
 
+    // Ограничиваем общую длину до 6 символов
+    if (value.length > 6) {
+        value = value.slice(0, 6);
+    }
     // Заменяем запятую на точку
     value = value.replace(',', '.');
 
@@ -291,18 +295,19 @@ inputs.forEach(input => {
 function formatForMathJax(value) {
     if (value === 0) {
         return value;
-    } else if (value < 0.005 && value !== 0) {
+    } else if (Math.abs(value) < 0.005 && value !== 0) {
+        // Обрабатываем значения с модулем меньше 0.005
         const expValue = value.toExponential(2);
         const [base, exponent] = expValue.split('e');
-        console.log(`${value} from if`);
+        console.log(`${value} from small range`);
         return `\\(${parseFloat(base)} \\times 10^{${parseInt(exponent)}}\\)`;
-    } else if (value >= 1000000) {
+    } else if (Math.abs(value) >= 1000000) {
         // Форматируем число в стандартном виде для значений больше или равно миллиону
         const expValue = value.toExponential(2);
         const [base, exponent] = expValue.split('e');
         console.log(`${value} from standard`);
         return `\\(${parseFloat(base)} \\times 10^{${parseInt(exponent)}}\\)`;
-    } else if (value >= 1000) {
+    } else if (Math.abs(value) >= 1000) {
         // Форматируем число с приставкой кило (k) для значений больше 1000
         const kiloValue = value / 1000;
         console.log(`${value} from kilo`);
@@ -328,34 +333,4 @@ function formatForMathJax(value) {
 //   }
 // });
 
-//
-// function validateAndShowAnswer(calcFunction, paramNames, resultElementId) {
-//   const inputs = document.querySelectorAll('input');
-//   const errorMessage = document.getElementById('error-message');
-//   const resultSection = document.getElementById(resultElementId);
-//   errorMessage.style.display = 'none';
-//   resultSection.innerHTML = '';  // Очищаем предыдущий ответ
-
-//   let valid = true;
-
-//   // Проверяем каждый input по названиям параметров
-//   paramNames.forEach(name => {
-//       const input = document.getElementById(name);
-//       if (input && input.value === '') {
-//           input.style.borderColor = 'red';  // Подсвечиваем красным
-//           valid = false;
-//       } else if (input) {
-//           input.style.borderColor = '';  // Сбрасываем стиль
-//       }
-//   });
-
-//   if (!valid) {
-//       errorMessage.style.display = 'block';  // Показываем сообщение об ошибке
-//   } else {
-//       // Если все поля заполнены, вычисляем и показываем ответ
-//       const params = paramNames.map(name => parseFloat(document.getElementById(name).value));
-//       const result = calcFunction(...params);  // Используем переданную функцию с параметрами
-//       resultSection.innerHTML = `Ответ: ${result}`;  // Выводим результат
-//   }
-// }
 
