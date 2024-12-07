@@ -1,3 +1,5 @@
+
+
 function validateAndShowAnswer(calcFunction, paramNames, resultElementId = 'resultSection', {measurementVal = ''} = {}) {
   const formulaBtn = document.querySelector('.show-formula-btn');
   const formulaSpan = formulaBtn.querySelector('span');
@@ -214,12 +216,14 @@ function checkAnswer(isCorrect, finalPointsElementId) {
     }, 1500);
   } else {
     //       <video class="pepe-cry animate__animated animate__flipInY" autoplay muted > <source src="../img/cryNiggaVid_cut.mp4" type="video/mp4">  NiggVideo.</video>
-
+    const gif = new Image();
+    gif.src = '../img/cryNigga.gif';
     // Логика для неправильного ответа
+    gif.onload = () => {
     resultDisplay.innerHTML = `
-        <img class="pepe-cry animate__animated animate__flipInY" src="../img/cryNigga.gif" alt="Плачущий Пепе">
+        <img class="pepe-cry animate__animated animate__flipInY" src="${gif.src}" alt="Плачущий Пепе">
   `;
-
+    }
   toggleBlur(true);  // Включить размытый фон
       // Удаляем сообщение через несколько секунд
       setTimeout(() => {
@@ -227,6 +231,12 @@ function checkAnswer(isCorrect, finalPointsElementId) {
         toggleBlur(false);
         location.reload();
     }, 2000);
+
+    // Обработчик ошибки загрузки (опционально)
+    gif.onerror = () => {
+        console.error('Негр плачет');
+        resultDisplay.innerHTML = `<p class="error-message">Ошибка загрузки изображения</p>`;
+        };
   }
 
 
