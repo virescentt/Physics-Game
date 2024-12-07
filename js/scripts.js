@@ -213,9 +213,13 @@ function checkAnswer(isCorrect, finalPointsElementId) {
         location.reload();
     }, 1500);
   } else {
+    // <img class="pepe-cry animate__animated animate__flipInY" src="../img/cryNiggaVIDEO.mp4" alt="Плачущий Пепе">
     // Логика для неправильного ответа
     resultDisplay.innerHTML = `
-    <img class="pepe-cry animate__animated animate__flipInY" src="../img/cryNigga.gif" alt="Плачущий Пепе">
+      <video class="pepe-cry animate__animated animate__flipInY" autoplay muted >
+  <source src="../img/cryNiggaVid_cut.mp4" type="video/mp4">
+  NiggVideo.
+</video>
   `;
 
   toggleBlur(true);  // Включить размытый фон
