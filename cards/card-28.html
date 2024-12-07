@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=no">
-    <title>Elektromagnetyzm: Kondensator</title>
+    <title>Elektromagnetyzm: Siła na przewodniku z prądem</title>
     <link rel="stylesheet" href="../css/styles.css">
     <!-- <link rel="stylesheet" href="../css/vendors.css"> -->
     <link rel="stylesheet" href="../css/info-box.css">
@@ -25,16 +25,16 @@
                 <p class="task-navbar_item back-link"><i class="fa-solid fa-chevron-left"></i> Wszystkie kartki</p>
                 <!-- &lt; -->
             </a>
-            <p class="task-navbar_item card-number">Kartka 27</p>
+            <p class="task-navbar_item card-number">Kartka 28</p>
 
         </div>
         <div class="card-content">
             <div class="up-content">
 
 
-            <h1 class="card-title"><span style="background-color: #6fa8dc;">Elektromagnetyzm:</span> Kondensator</h1>
-            <p class="task-content">Znajdź pojemność kondensatora płaskiego o powierzchni okładek
-                <span class="highlight">\(S = ?\)</span>, odległości między nimi <span class="highlight">\(d = 1 mm\)</span>, jeśli współczynnik przenikalności dielektrycznej ośrodka wynosi <span class="highlight">\(ε = 2\)</span>, a <span class="highlight">\( ε₀ = 8.85 \cdot 10^{-12} \frac{F}{m}\)</span>.</p>
+            <h1 class="card-title"><span style="background-color: #6fa8dc;">Elektromagnetyzm:</span> Siła na przewodniku z prądem</h1>
+            <p class="task-content">Przewodnik o długości
+                <span class="highlight">\(l = ?\)</span> z prądem <span class="highlight">\(I = ?\)</span> znajduje się w polu magnetycznym o indukcji <span class="highlight">\(B = 0.2 T\)</span>, skierowanym pod kątem <span class="highlight">\( α = ? \)</span> do przewodnika. Znajdź siłę działającą na przewodnik.</p>
                 <!-- style="font-size: 20px;" -->
             <div class="formula-container">
 <!--
@@ -42,7 +42,7 @@
                     Показать Формулу <i style="color: white;" class="fa-solid fa-eye"></i>
                     <span style="margin-top: 5px; display: block; text-align: center; color: red">( -0.5 балла)</span>
                 </button> -->
-                <p id="formula" style="display: none;" class="formula">\( C = \frac{ε \cdot ε₀ \cdot S}{d} \)</p>
+                <p id="formula" style="display: none;" class="formula">\( F = BIl \cdot sin(α) \)</p>
 
                 <p id="formulaWarning" style="display: none;">Straciłeś 0,5 punktu za skorzystanie z podpowiedzi.</p>
 
@@ -55,9 +55,20 @@
             <!-- <div class="input-container"> -->
 
                 <div class="first-input">
+                    <label for="l">Długość (l):</label>
+                    <input type="text" id="l" name="l" placeholder="? m">
+                    <!-- step="any" pattern="\d*\.?\d*" oninput="this.value = this.value.replace(/[^0-9.,]/g, '').replace(/,/g, '.');" -->
+                </div>
+                <div class="second-input">
 
-                    <label for="s">Pole (S):</label>
-                    <input type="text" id="s" name="s" placeholder="? m²">
+                    <label for="i">Prąd (I):</label>
+                    <input type="text" id="i" name="i" placeholder="? A">
+                    <!-- step="any" pattern="\d*\.?\d*" oninput="this.value = this.value.replace(/[^0-9.,]/g, '').replace(/,/g, '.');" -->
+                </div>
+                <div class="third-input">
+
+                    <label for="a">Kąt (α):</label>
+                    <input type="text" id="a" name="a" placeholder="? °">
                     <!-- step="any" pattern="\d*\.?\d*" oninput="this.value = this.value.replace(/[^0-9.,]/g, '').replace(/,/g, '.');" -->
                 </div>
 
@@ -69,7 +80,7 @@
                 Pokaż Formułę <i style="color: white;" class="fa-solid fa-eye"></i>
                 <span style="margin-top: 5px; display: block; text-align: center; color: red">(-0.5 punktu)</span>
             </button>
-            <button id="display-answer" type="button" class="button display-answer" onclick="validateAndShowAnswer(task1Calculation, ['s'], 'resultSection', { measurementVal: '\\( F \\)'} )">Pokaż odpowiedź</button>
+            <button id="display-answer" type="button" class="button display-answer" onclick="validateAndShowAnswer(task1Calculation, ['l', 'i', 'a'], 'resultSection', { measurementVal: '\\( N \\)'} )">Pokaż odpowiedź</button>
             <div id="resultSection">
                 <!-- Заполняется через JS -->
             </div>
@@ -149,7 +160,7 @@
     <script>
         // Задача 1
         function task1Calculation(a, b, c, d) {
-            return (2 * 8.85 * Math.pow(10, -12) * a)/0.001
+            return 0.2 * a * b * 0.5
         }
     </script>
     <script src="../js/scripts.js"></script>
