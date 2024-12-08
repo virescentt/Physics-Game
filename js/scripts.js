@@ -11,44 +11,63 @@ function validateAndShowAnswer(calcFunction, paramNames, resultElementId = 'resu
 
   let valid = true;
 
-  // Проверяем каждый input
+  // Проверяем, что все поля заполнены
   paramNames.forEach(name => {
-      const input = document.getElementById(name);
-      if (input && input.value === '') {
-          input.style.borderColor = 'red';  // Подсвечиваем красным
-          valid = false;
-      } else if (input) {
-          input.style.borderColor = '';  // Сбрасываем стиль
-      }
-  });
+    const input = document.getElementById(name);
+    if (input && input.value === '') {
+        input.style.borderColor = 'red'; // Подсвечиваем красным
+        valid = false;
+        errorMessage.innerHTML = `Proszę wypełnić wszystkie pola.`; // Сообщение об ошибке
+    } else if (input) {
+        input.style.borderColor = ''; // Сбрасываем стиль
+    }
+});
 
+// Если есть незаполненные поля, не продолжаем
+if (!valid) {
+    errorMessage.style.display = 'block'; // Показываем сообщение об ошибке
+    return;
+}
 
-  if (!valid) {
-      errorMessage.style.display = 'block';  // Показываем сообщение об ошибке
-  } else {
-    paramNames.forEach(name => {
-      const input = document.getElementById(name);
-      input.setAttribute('readonly', true);
-    });
-      // Если все поля заполнены, вычисляем и показываем ответ
-      const params = paramNames.map(name => parseFloat(document.getElementById(name).value));
-      let result = calcFunction(...params);  // Используем переданную функцию с параметрами
-      formulaBtn.classList.add('btn-disabled');
-      formulaBtn.disabled = true; // Отключаем кнопку для дальнейших кликов
-      answerBtn.classList.add('btn-disabled');
-      // answerBtn.disabled = true;
-      answerBtn.style.display = 'none';
+// Проверяем диапазон углов
+paramNames.forEach(name => {
+    const input = document.getElementById(name);
+    if (name === 'alpha' && (input.value < 0 || input.value > 90)) {
+        input.style.borderColor = 'red'; // Подсвечиваем красным
+        valid = false;
+        errorMessage.innerHTML = `Dopuszczalne wartości kąta: 0° - 90°.`; // Сообщение об ошибке
+    } else if (input) {
+        input.style.borderColor = ''; // Сбрасываем стиль
+    }
+});
 
-      formulaSpan.style.color = '';
+if (!valid) {
+    errorMessage.style.display = 'block'; // Показываем сообщение об ошибке
+    return;
+}
+paramNames.forEach(name => {
+    const input = document.getElementById(name);
+    input.setAttribute('readonly', true);
+});
+// Если все поля заполнены, вычисляем и показываем ответ
+const params = paramNames.map(name => parseFloat(document.getElementById(name).value));
+let result = calcFunction(...params);  // Используем переданную функцию с параметрами
+formulaBtn.classList.add('btn-disabled');
+formulaBtn.disabled = true; // Отключаем кнопку для дальнейших кликов
+answerBtn.classList.add('btn-disabled');
+// answerBtn.disabled = true;
+answerBtn.style.display = 'none';
 
-      result = formatForMathJax(result);
-      // вот здесь уже вопрос, не думаю что мне в эту секцию надо выводить ответ
-      resultSection.innerHTML = `<p style="margin-top: 1rem; font-size: 1.5rem; ">Odpowiedź: ${result} ${measurementVal}</p>`;
+formulaSpan.style.color = '';
 
-      MathJax.typesetPromise([resultSection]);
-      // checkSection.style.display = 'block'; Немодальные кнопки Верно/Неверно
-      showModal(result, measurementVal);  // Показываем модальное окно с правильным ответом
-  }
+result = formatForMathJax(result);
+// вот здесь уже вопрос, не думаю что мне в эту секцию надо выводить ответ
+resultSection.innerHTML = `<p style="margin-top: 1rem; font-size: 1.5rem; ">Odpowiedź: ${result} ${measurementVal}</p>`;
+
+MathJax.typesetPromise([resultSection]);
+// checkSection.style.display = 'block'; Немодальные кнопки Верно/Неверно
+showModal(result, measurementVal);  // Показываем модальное окно с правильным ответом
+
 }
 
 
@@ -216,9 +235,10 @@ function checkAnswer(isCorrect, finalPointsElementId) {
     }, 1500);
   } else {
     //       <video class="pepe-cry animate__animated animate__flipInY" autoplay muted > <source src="../img/cryNiggaVid_cut.mp4" type="video/mp4">  NiggVideo.</video>
+    // Логика для неправильного ответа
     const gif = new Image();
     gif.src = '../img/cryNigga.gif';
-    // Логика для неправильного ответа
+
     gif.onload = () => {
     resultDisplay.innerHTML = `
         <img class="pepe-cry animate__animated animate__flipInY" src="${gif.src}" alt="Плачущий Пепе">
@@ -330,6 +350,17 @@ function formatForMathJax(value) {
         return value;
     }
 }
+
+// Функция для получения синуса и косинуса по углу
+function getTrigValues(degrees) {
+    const angle = parseInt(degrees, 10); // Преобразуем в целое число
+    // if (angle < 0 || angle > 90) {
+
+    //     throw new Error('Допустимые значения: 0 - 90.');
+    // }
+    return angleTrigValues[angle];
+}
+
 // const infoBox = document.getElementById("infoBox");
 // const infoTab = document.getElementById("infoTab");
 

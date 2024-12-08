@@ -43,7 +43,7 @@
                     Показать Формулу <i style="color: white;" class="fa-solid fa-eye"></i>
                     <span style="margin-top: 5px; display: block; text-align: center; color: red">( -0.5 балла)</span>
                 </button> -->
-                <p id="formula" style="display: none;" class="formula">\( a = \frac{m_1g - μm_1g \cdot cos(α) - m_1g \cdot sin(α) }{m_1 + m_2} \)</p>
+                <p id="formula" style="display: none;" class="formula">\( a = \frac{m_2g - μm_1g \cdot cos(α) - m_1g \cdot sin(α) }{m_1 + m_2} \)</p>
 
                 <p id="formulaWarning" style="display: none;">Straciłeś 0,5 punktu za skorzystanie z podpowiedzi.</p>
 
@@ -62,8 +62,8 @@
                     <!-- step="any" pattern="\d*\.?\d*" oninput="this.value = this.value.replace(/[^0-9.,]/g, '').replace(/,/g, '.');" -->
                 </div>
                 <div class="second-input">
-                    <label for="a">Kąnt (α):</label>
-                    <input type="text" id="a" name="a" placeholder="? °" >
+                    <label for="alpha">Kąnt (α):</label>
+                    <input type="text" id="alpha" name="alpha" placeholder="? °" >
 
                 </div>
 
@@ -75,7 +75,7 @@
                 Pokaż Formułę <i style="color: white;" class="fa-solid fa-eye"></i>
                 <span style="margin-top: 5px; display: block; text-align: center; color: red">(-0.5 punktu)</span>
             </button>
-            <button id="display-answer" type="button" class="button display-answer" onclick="validateAndShowAnswer(task1Calculation, ['m', 'a'], 'resultSection', { measurementVal: '\\( N \\) '} )">Pokaż odpowiedź</button>
+            <button id="display-answer" type="button" class="button display-answer" onclick="validateAndShowAnswer(task1Calculation, ['m', 'alpha'], 'resultSection', { measurementVal: '\\( \\frac{m}{s^2} \\) '} )">Pokaż odpowiedź</button>
             <div id="resultSection">
                 <!-- Заполняется через JS -->
             </div>
@@ -155,7 +155,17 @@
     <script>
         // Задача 1
         function task1Calculation(a, b, c, d) {
-            return (a * G - 0.2 * a * G * 0.00001 - a * G * 0.0001)/(1.5 + a);
+            let trigonometry = getTrigValues(b);
+            console.log(trigonometry);
+            console.log(trigonometry['cos'], trigonometry['sin']);
+            console.log(a);
+            let first = a * G;
+            let second = 0.2 * 1.5 * G * trigonometry['cos'];
+            let third = 1.5 * G * trigonometry['sin'];
+            console.log(first, second, third);
+            let up = (a * G) - (0.2 * 1.5 * G * trigonometry['cos']) - (1.5 * G * trigonometry['sin']);
+            console.log(up);
+            return up/(1.5 + a);
         }
     </script>
     <script src="../js/scripts.js"></script>
