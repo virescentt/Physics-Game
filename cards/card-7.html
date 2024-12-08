@@ -62,11 +62,6 @@
                     <!-- step="any" pattern="\d*\.?\d*" oninput="this.value = this.value.replace(/[^0-9.,]/g, '').replace(/,/g, '.');" -->
                 </div>
                 <div class="second-input">
-                    <label for="a">Przyspieszenie (a):</label>
-                    <input type="text" id="a" name="a" placeholder="? m/s^2" >
-
-                </div>
-                <div class="third-input">
                     <label for="t">Czas (t):</label>
                     <input type="text" id="t" name="t" placeholder="? s" >
 
@@ -80,7 +75,7 @@
                 Pokaż Formułę <i style="color: white;" class="fa-solid fa-eye"></i>
                 <span style="margin-top: 5px; display: block; text-align: center; color: red">(-0.5 punktu)</span>
             </button>
-            <button id="display-answer" type="button" class="button display-answer" onclick="validateAndShowAnswer(task1Calculation, ['v', 'a', 't'], 'resultSection', { measurementVal: '\\( m \\) '} )">Pokaż odpowiedź</button>
+            <button id="display-answer" type="button" class="button display-answer" onclick="validateAndShowAnswer(task1Calculation, ['v', 't'], 'resultSection', { measurementVal: '\\( m \\) '} )">Pokaż odpowiedź</button>
             <div id="resultSection">
                 <!-- Заполняется через JS -->
             </div>
@@ -160,7 +155,7 @@
     <script>
         // Задача 1
         function task1Calculation(a, b, c, d) {
-            return a + (b * Math.pow(c, 2)) / 2;
+            return a + (7.7 * Math.pow(b, 2)) / 2;
         }
     </script>
     <script src="../js/scripts.js"></script>
