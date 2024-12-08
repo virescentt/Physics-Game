@@ -236,12 +236,12 @@ function checkAnswer(isCorrect, finalPointsElementId) {
   } else {
     //       <video class="pepe-cry animate__animated animate__flipInY" autoplay muted > <source src="../img/cryNiggaVid_cut.mp4" type="video/mp4">  NiggVideo.</video>
     // Логика для неправильного ответа
-    const gif = new Image();
-    gif.src = '../img/cryNigga.gif';
+    const imgWrong = new Image();
+    imgWrong.src = '../img/pepe_cry.png';
 
-    gif.onload = () => {
+    imgWrong.onload = () => {
     resultDisplay.innerHTML = `
-        <img class="pepe-cry animate__animated animate__flipInY" src="${gif.src}" alt="Плачущий Пепе">
+        <img class="pepe-cry animate__animated animate__flipInY" src="${imgWrong.src}" alt="Плачущий Пепе">
   `;
     }
   toggleBlur(true);  // Включить размытый фон
