@@ -67,8 +67,8 @@
                 </div>
                 <div class="third-input">
 
-                    <label for="a">Kąt (α):</label>
-                    <input type="text" id="a" name="a" placeholder="? °">
+                    <label for="alpha">Kąt (α):</label>
+                    <input type="text" id="alpha" name="alpha" placeholder="? °">
                     <!-- step="any" pattern="\d*\.?\d*" oninput="this.value = this.value.replace(/[^0-9.,]/g, '').replace(/,/g, '.');" -->
                 </div>
 
@@ -80,7 +80,7 @@
                 Pokaż Formułę <i style="color: white;" class="fa-solid fa-eye"></i>
                 <span style="margin-top: 5px; display: block; text-align: center; color: red">(-0.5 punktu)</span>
             </button>
-            <button id="display-answer" type="button" class="button display-answer" onclick="validateAndShowAnswer(task1Calculation, ['l', 'i', 'a'], 'resultSection', { measurementVal: '\\( N \\)'} )">Pokaż odpowiedź</button>
+            <button id="display-answer" type="button" class="button display-answer" onclick="validateAndShowAnswer(task1Calculation, ['l', 'i', 'alpha'], 'resultSection', { measurementVal: '\\( N \\)'} )">Pokaż odpowiedź</button>
             <div id="resultSection">
                 <!-- Заполняется через JS -->
             </div>
@@ -160,7 +160,7 @@
     <script>
         // Задача 1
         function task1Calculation(a, b, c, d) {
-            return 0.2 * a * b * 0.5
+            return 0.2 * a * b * getTrigValues(c)['sin'];
         }
     </script>
     <script src="../js/scripts.js"></script>
