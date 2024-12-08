@@ -8,3 +8,6 @@ for (let angle = 0; angle <= 90; angle++) {
     };
 }
 
+
+const imgWrong = new Image();
+imgWrong.src = '../img/cryNigga.gif';

@@ -1,5 +1,3 @@
-
-
 function validateAndShowAnswer(calcFunction, paramNames, resultElementId = 'resultSection', {measurementVal = ''} = {}) {
   const formulaBtn = document.querySelector('.show-formula-btn');
   const formulaSpan = formulaBtn.querySelector('span');
@@ -167,6 +165,15 @@ function showModal(result, measurementVal) {
     const modalAnswerText = document.getElementById('modalAnswerText');
     const warningMessage = document.querySelector('.formula-warning');
 
+      // Создаем элемент для отображения результата
+    const resultDisplay = document.createElement('div');
+    resultDisplay.id = 'resultDisplay';
+    document.body.appendChild(resultDisplay);
+
+    imgWrong.onload = () => {
+    resultDisplay.innerHTML = ` `;
+    }
+
     if (window.innerWidth <= 867) { // Ширина экрана для телефонов, можно заменить на нужное значение
         document.body.style.position = 'fixed';
     }
@@ -211,10 +218,10 @@ function checkAnswer(isCorrect, finalPointsElementId) {
   const finalPointsEl = document.getElementById(finalPointsElementId);
 
 
-  // Создаем элемент для отображения результата
-  const resultDisplay = document.createElement('div');
-  resultDisplay.id = 'resultDisplay';
-  document.body.appendChild(resultDisplay);
+//   // Создаем элемент для отображения результата
+  const resultDisplay = document.getElementById('resultDisplay');
+//   resultDisplay.id = 'resultDisplay';
+//   document.body.appendChild(resultDisplay);
 
 
   if (isCorrect) {
@@ -234,16 +241,10 @@ function checkAnswer(isCorrect, finalPointsElementId) {
         location.reload();
     }, 1500);
   } else {
-    //       <video class="pepe-cry animate__animated animate__flipInY" autoplay muted > <source src="../img/cryNiggaVid_cut.mp4" type="video/mp4">  NiggVideo.</video>
-    // Логика для неправильного ответа
-    const imgWrong = new Image();
-    imgWrong.src = '../img/pepe_cry.png';
 
-    imgWrong.onload = () => {
     resultDisplay.innerHTML = `
-        <img class="pepe-cry animate__animated animate__flipInY" src="${imgWrong.src}" alt="Плачущий Пепе">
-  `;
-    }
+    <img class="pepe-cry animate__animated animate__flipInY" src="${imgWrong.src}" alt="Плачущий Пепе"> `;
+
   toggleBlur(true);  // Включить размытый фон
       // Удаляем сообщение через несколько секунд
       setTimeout(() => {
@@ -253,7 +254,7 @@ function checkAnswer(isCorrect, finalPointsElementId) {
     }, 2000);
 
     // Обработчик ошибки загрузки (опционально)
-    gif.onerror = () => {
+    imgWrong.onerror = () => {
         console.error('Негр плачет');
         resultDisplay.innerHTML = `<p class="error-message">Ошибка загрузки изображения</p>`;
         };
