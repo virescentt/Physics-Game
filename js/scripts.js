@@ -206,7 +206,7 @@ function closeModal(resultElementId = 'resultSection', fromWhom = 'button') {
 
   if (fromWhom == 'cross') {
     toggleBlur(false); // оно срабатывает при нажатии на кнопки Верно Неверно с нужным им таймом, поэтому это излишне если не использовать крестик
-    location.reload();
+    location.href = '../index.html';
   }
 
 }
@@ -238,7 +238,7 @@ function checkAnswer(isCorrect, finalPointsElementId) {
       setTimeout(() => {
         resultDisplay.remove();
         toggleBlur(false);
-        location.reload();
+        location.href = '../index.html';
     }, 1500);
   } else {
 
@@ -250,7 +250,7 @@ function checkAnswer(isCorrect, finalPointsElementId) {
       setTimeout(() => {
         resultDisplay.remove();
         toggleBlur(false);
-        location.reload();
+        location.href = '../index.html';
     }, 2000);
 
     // Обработчик ошибки загрузки (опционально)
