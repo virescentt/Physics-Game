@@ -1,6 +1,8 @@
 /* @import '../node_modules/animate.css/animate.min.css'; */
 @import '../css/fonts.css';
 @import '../css/vendors.css';
+@import '../css/vars.css';
+
 
 * {
     box-sizing: border-box;
