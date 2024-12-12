@@ -45,6 +45,8 @@ function homeCardGeneration () {
 
 
 document.getElementById('searchInput').addEventListener('input', function () {
+    notFoundMessage.style.display = 'none';
+
     const query = this.value;
     const cards = document.querySelectorAll('.card');
     let firstVisibleCard = null;
