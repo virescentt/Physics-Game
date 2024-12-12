@@ -34,19 +34,50 @@ function homeCardGeneration () {
 // });
 
 
+
 document.getElementById('searchInput').addEventListener('input', function () {
     const query = this.value;
     const cards = document.querySelectorAll('.card');
+    let firstVisibleCard = null;
+
     console.log('Im looking..');
     cards.forEach(card => {
-
         const id = card.getAttribute('data-id');
 
         // Проверяем совпадение с query и показываем/скрываем
         if (id.startsWith(query)) {
             card.style.display = 'inline-block';
+            if (!firstVisibleCard) {
+                firstVisibleCard = card; // Запоминаем первую видимую карточку
+            }
         } else {
             card.style.display = 'none';
         }
     });
+
+    // Если есть совпадения, прокрутить к первой видимой карточке
+    if (firstVisibleCard) {
+        firstVisibleCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    } else {
+        // Если совпадений нет, прокручиваем к началу контейнера
+        const cardsContainer = document.getElementById('cardsContainer');
+        cardsContainer.scrollTo({ top: 0, behavior: 'smooth' });
+    }
 });
+// document.getElementById('searchInput').addEventListener('input', function () {
+//     const query = this.value;
+//     const cards = document.querySelectorAll('.card');
+//     console.log('Im looking..');
+//     cards.forEach(card => {
+
+//         const id = card.getAttribute('data-id');
+
+//         // Проверяем совпадение с query и показываем/скрываем
+//         if (id.startsWith(query)) {
+//             card.style.display = 'inline-block';
+//         } else {
+//             card.style.display = 'none';
+//         }
+//     });
+// });
+
