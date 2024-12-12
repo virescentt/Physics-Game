@@ -46,6 +46,7 @@ function homeCardGeneration () {
 
 document.getElementById('searchInput').addEventListener('input', function () {
     notFoundMessage.style.display = 'none';
+    // cardsContainer.style.boxShadow = 'inset 0 -15px 15px -15px rgba(0, 0, 0, 0.3)';
 
     const query = this.value;
     const cards = document.querySelectorAll('.card');
@@ -74,7 +75,7 @@ document.getElementById('searchInput').addEventListener('input', function () {
         // Если совпадений нет, прокручиваем к началу контейнера
         const cardsContainer = document.getElementById('cardsContainer');
         notFoundMessage.style.display = 'block';
-        cardsContainer.style.boxShadow = 'none';
+        // cardsContainer.style.boxShadow = 'none';
         cardsContainer.scrollTo({ top: 0, behavior: 'smooth' });
     }
 });
