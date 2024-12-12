@@ -23,6 +23,15 @@ function homeCardGeneration () {
         cardsContainer.appendChild(tempDiv.firstElementChild);
     }
 
+    // Добавляем скрытый параграф "Nie znaleziono wyników"
+    const notFoundText = document.createElement('p');
+    notFoundText.id = 'notFoundMessage';
+    notFoundText.innerHTML = `Jest tylko 30 kartek <i style="color: #666; margin-left: 5px;" <i class="fa-regular fa-face-frown"></i>`;
+    notFoundText.style.display = 'none';
+    notFoundText.style.opacity = '.8';
+    notFoundText.style.color = '#666';
+    cardsContainer.appendChild(notFoundText);
+
 }
 
 
@@ -52,6 +61,7 @@ document.getElementById('searchInput').addEventListener('input', function () {
             }
         } else {
             card.style.display = 'none';
+
         }
     });
 
@@ -61,6 +71,8 @@ document.getElementById('searchInput').addEventListener('input', function () {
     } else {
         // Если совпадений нет, прокручиваем к началу контейнера
         const cardsContainer = document.getElementById('cardsContainer');
+        notFoundMessage.style.display = 'block';
+        cardsContainer.style.boxShadow = 'none';
         cardsContainer.scrollTo({ top: 0, behavior: 'smooth' });
     }
 });
